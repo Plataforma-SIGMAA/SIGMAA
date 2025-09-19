@@ -14,7 +14,28 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('registration')->unique();
+            $table->string('cpf', '14')->unique();
+            $table->string('rg', '10')->unique()->nullable();
+            $table->string('telephone')->nullable();
             $table->string('email')->unique();
+            $table->date('birth_date');
+            $table->string('photo')->nullable();
+            $table->string('father');
+            $table->string('mother');
+            $table->enum('sex', ['Macho', 'Fêmea', 'Intersexo']);
+            $table->enum('ethnicity', ['Branca', 'Preta', 'Parda', 'Amarela', 'Indígena']);
+            $table->string('nacionality');
+            $table->string('naturalness');
+            $table->string('country');
+            $table->string('uf');
+            $table->string('cep');
+            $table->string('district');
+            $table->string('street');
+            $table->string('house_number')->nullable();
+            $table->string('level');
+            $table->foreignId('course_id')->constrained('courses');
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
