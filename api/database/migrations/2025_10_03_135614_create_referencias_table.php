@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quarters', function (Blueprint $table) {
+        Schema::create('referencias', function (Blueprint $table) {
             $table->id();
-            $table->enum('number', ['1', '2', '3']);
-            $table->foreignId('subject_student_id')->constrained('subjects_students');
+            $table->string('nome');
+            $table->string('tipo');
+            $table->string('url');
+            $table->string('detalhes');
+            $table->string('disciplina_id')->constrained('disciplinas');
+
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quarters');
+        Schema::dropIfExists('referencias');
     }
 };

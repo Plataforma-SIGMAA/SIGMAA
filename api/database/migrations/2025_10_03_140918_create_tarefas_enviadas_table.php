@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assessments', function (Blueprint $table) {
+        Schema::create('tarefas_enviadas', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
-            $table->date('date');
-            $table->string('time');
-            $table->string('subject_id')->constrained('subjects');
+            $table->date('data_entrega');
+            $table->string('tarefa_id')->constrained('tarefas');
+            $table->string('estudante_id')->constrained('users');
+
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assessments');
+        Schema::dropIfExists('tarefas_enviadas');
     }
 };

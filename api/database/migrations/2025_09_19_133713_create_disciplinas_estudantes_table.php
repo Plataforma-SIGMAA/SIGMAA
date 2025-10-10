@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('disciplinas_estudantes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('deadline_date');
-            $table->string('type');            
-            $table->string('subject_id')->constrained('subjects');
+            $table->string('estudante_id')->constrained('users');
+            $table->string('disciplina_id')->constrained('disciplinas');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('disciplinas_estudantes');
     }
 };
