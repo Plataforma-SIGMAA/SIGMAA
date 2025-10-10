@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('trimestres', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('objective');
-            $table->integer('mandatory_internship_hours')->nullable();
-            $table->integer('mandatory_additional_hours')->nullable();
-
+            $table->enum('numero', ['1', '2', '3']);
+            $table->foreignId('disciplina_estudante_id')->constrained('disciplinas_estudantes');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('trimestres');
     }
 };

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('submitted_tasks', function (Blueprint $table) {
+        Schema::create('materiais', function (Blueprint $table) {
             $table->id();
-            $table->date('submission_date');
-            $table->string('task_id')->constrained('tasks');
-            $table->string('student_id')->constrained('users');
-
+            $table->string('pasta');
+            $table->string('url');
+            $table->string('caminho');
+            $table->string('data_upload');
+            $table->string('disciplina_id')->constrained('disciplinas');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('submitted_tasks');
+        Schema::dropIfExists('materiais');
     }
 };

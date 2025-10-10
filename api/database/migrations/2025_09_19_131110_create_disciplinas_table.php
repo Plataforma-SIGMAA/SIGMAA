@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('disciplinas', function (Blueprint $table) {
             $table->id();
-            $table->string('assessment');
-            $table->float('grade_value', '4', '2');
-            $table->float('grade_obtained', '4', '2');
-            $table->boolean('is_recuperation')->default(false);
-            $table->foreignId('quarter_id')->constrained('quarters');
-
+            $table->string('nome');
+            $table->integer('ano');
+            $table->boolean('is_hidden')->default(false);
+            $table->foreignId('curso_id')->constrained('cursos');
+            $table->string('professor_id')->constrained('users');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('disciplinas');
     }
 };
