@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('rg', '10')->unique()->nullable();
             $table->string('telephone')->nullable();
             $table->string('email')->unique();
+<<<<<<< Updated upstream
             $table->date('birth_date');
             $table->string('photo')->nullable();
             $table->string('father');
@@ -28,6 +29,17 @@ return new class extends Migration
             $table->string('nacionality');
             $table->string('naturalness');
             $table->string('country');
+=======
+            $table->date('data_nasc');
+            $table->string('foto')->nullable();
+            $table->string('pai');
+            $table->string('mae');
+            $table->enum('sexo', ['Masculino', 'Feminino', 'Intersexo']);
+            $table->enum('etnia', ['Branca', 'Preta', 'Parda', 'Amarela', 'Indígena']);
+            $table->string('nacionalidade');
+            $table->string('naturalidade');
+            $table->string('pais');
+>>>>>>> Stashed changes
             $table->string('uf');
             $table->string('cep');
             $table->string('district');
