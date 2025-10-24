@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('tarefas_enviadas', function (Blueprint $table) {
             $table->id();
-            $table->string('assessment');
-            $table->float('grade_value', '4', '2');
-            $table->float('grade_obtained', '4', '2');
-            $table->boolean('is_recuperation')->default(false);
-            $table->foreignId('quarter_id')->constrained('quarters');
+            $table->date('data_entrega');
+            $table->foreignId('tarefa_id')->constrained('tarefas');
+            $table->foreignId('estudante_id')->constrained('users');
 
             $table->timestamps();
         });
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('tarefas_enviadas');
     }
 };

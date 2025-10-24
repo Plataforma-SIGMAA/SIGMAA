@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quarters', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->id();
-            $table->enum('number', ['1', '2', '3']);
-            $table->foreignId('subject_student_id')->constrained('subjects_students');
+            $table->string('nome');
+            $table->text('objetivo');
+            $table->integer('carga_horaria_estagio')->nullable();
+            $table->integer('horas_complementares')->nullable();
+
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quarters');
+        Schema::dropIfExists('cursos');
     }
 };

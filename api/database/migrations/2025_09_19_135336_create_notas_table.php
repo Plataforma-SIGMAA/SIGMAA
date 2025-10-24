@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assessments', function (Blueprint $table) {
+        Schema::create('notas', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
-            $table->date('date');
-            $table->string('time');
-            $table->string('subject_id')->constrained('subjects');
+            $table->string('avaliacao');
+            $table->float('peso', '4', '2');
+            $table->float('nota_obtida', '4', '2');
+            $table->boolean('is_recuperacao')->default(false);
+            $table->foreignId('trimestre_id')->constrained('trimestres');
+
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assessments');
+        Schema::dropIfExists('notas');
     }
 };

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('references', function (Blueprint $table) {
+        Schema::create('avaliacoes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('type');
-            $table->string('url');
-            $table->string('details');
-            $table->string('subject_id')->constrained('subjects');
-
+            $table->string('desc');
+            $table->date('data');
+            $table->string('horario');
+            $table->foreignId('disciplina_id')->constrained('disciplinas');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('references');
+        Schema::dropIfExists('avaliacoes');
     }
 };
