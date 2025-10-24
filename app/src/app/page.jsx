@@ -2,61 +2,103 @@ import styles from "./page.materia.module.css";
 
 export default function Home() {
   return (
-    <main >
-        <div className={styles.menu}>
-            <ul>
-                <li><span className={`material-symbols-outlined ${styles.tamanho}`}>menu</span></li>
-                <li className={styles.perfil}>Perfil</li>
-            </ul>
-        </div>
-      <div >
-        <h1 >Desenvolvimento de Sistemas</h1>
+    <>
+    <main className={styles.corpo}>
+      <div className={styles.menu}>
         <ul>
-            <li><button>Participantes</button></li>
-            <li><button>Notas</button></li>
-            <li><button>Moddle</button></li>
+          <li><span className={`material-symbols-outlined ${styles.icon}`}>menu</span></li>
+          <li className={styles.perfil}>
+            Perfil 
+            <span className={`material-symbols-outlined ${styles.conta}`}>account_circle</span>
+            <span className={`material-symbols-outlined ${styles.abaixar}`}>expand_circle_down</span>
+          </li>
         </ul>
-        <div>Frequência</div>
-        <div>85%</div>
-        <div>Avaliações</div>
-        <table>
-          
+      </div>
+
+      <div className={styles.conteudoesq}>
+        <h1>Desenvolvimento de Sistemas</h1>
+        <div className={styles.diretorios}>
+          <button className={styles.botaodir}>Participantes</button>
+          <button className={styles.botaodir}>Notas</button>
+          <button className={styles.botaodir}>Moodle</button>
+        </div>
+
+        <div className={styles.blocofreq}>
+          <h2 className={styles.freq}>Frequência</h2>
+          <div className={styles.caixafreq}>
+            <div className={styles.valorfreq}>85%</div>
+          </div>
+          <h2 className={styles.freq}>Avaliações</h2>
+        </div>
+
+        <table className={styles.avaliacoes}>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Disciplina</th>
+              <th>Avaliação</th>
+            </tr>
+          </thead>
           <tbody>
             <tr>
               <td>11/09</td>
-              <td>TINF - Disciplina</td>
-              <td>Prova 1</td>
+              <td>TIINF - Disciplina</td>
+              <td>Prova I</td>
             </tr>
             <tr>
               <td>11/09</td>
-              <td>TINF - Disciplina</td>
-              <td>Prova 1</td>
+              <td>TIINF - Disciplina</td>
+              <td>Prova I</td>
             </tr>
             <tr>
-            <td>11/09</td>
-              <td>TINF - Disciplina</td>
-              <td>Prova 1</td>
+              <td>11/09</td>
+              <td>TIINF - Disciplina</td>
+              <td>Prova I</td>
             </tr>
             <tr>
-            <td>11/09</td>
-              <td>TINF - Disciplina</td>
-              <td>Prova 1</td>
+              <td>11/09</td>
+              <td>TIINF - Disciplina</td>
+              <td>Prova I</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div >
-        <h2 >Conteúdos das aulas</h2>
-        <div>
-            <div><strong>Apresentação Sprint 1</strong> <p>23/05 - 30/05</p></div>
-            <div><strong>Apresentação Sprint 2</strong> <p>30/05 - 06/06</p></div>
-            <div><strong>Feriado</strong> <p>06/06 - 13/06</p></div>
-            <div><strong>Apresentação Sprint 4</strong> <p>13/06 - 20/06</p></div>
-            <div><strong>Apresentação Sprint 5</strong> <p>20/06 - 27/06</p></div>
-            <div><strong>Apresentação Sprint 6</strong> <p>27/06 - 04/07</p></div>
+
+      <div className={styles.conteudodir}>
+        <h2 className={styles.titulocont}>Conteúdos das aulas</h2>
+        <div className={styles.listacont}>
+          <div className={styles.aula}>
+            <strong>Apresentação Sprint 1</strong>
+            <p>23/05 - 30/05</p>
+          </div>
+          <div className={styles.aula}>
+            <strong>Apresentação Sprint 2</strong>
+            <p>30/05 - 06/06</p>
+          </div>
+          <div className={styles.aula}>
+            <strong>Feriado</strong>
+            <p>23/05 - 30/05</p>
+          </div>
+          <div className={styles.aula}>
+            <strong>Apresentação Sprint 4</strong>
+            <p>23/05 - 30/05</p>
+          </div>
+          <div className={styles.aula}>
+            <strong>Apresentação Sprint 5</strong>
+            <p>23/05 - 30/05</p>
+          </div>
+          <div className={styles.aula}>
+            <strong>Apresentação Sprint 6</strong>
+            <p>23/05 - 30/05</p>
+          </div>
         </div>
       </div>
-      <div>rodapé</div>
+
+      
     </main>
+    <footer className={styles.rodape}>
+    rodapé
+  </footer>
+    </>
   );
 }
