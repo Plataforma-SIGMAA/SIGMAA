@@ -23,7 +23,7 @@ export default function LoginPage() {
       <div className="login-blob"></div>
       <div className="login-container">
         <h1 className="login-title">SIGMAA</h1>
-        <p className="login-subtitle">Sistema Integrado de Gerenciamento de Materiais e Atividades Acadêmicas</p>
+        <p className="login-subtitle">Sistema Integrado de Gestão de Materiais e Atividades Acadêmicas</p>
 
         <form onSubmit={handleLogin} className="login-form">
           <div className="login-email">
@@ -49,8 +49,8 @@ export default function LoginPage() {
               className="login-input"
             />
             <p className="login-forgot-password">
-              Esqueceu sua senha? Sem problemas! 
-              <a href="#" className="forgot-password-link"> Clique aqui para iniciar a recuperação de senha</a>
+              Esqueceu sua senha? Sem problemas!  
+              <a href="#" className="forgot-password-link"> Clique aqui</a>
             </p>
           </div>
 

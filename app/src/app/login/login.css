@@ -76,12 +76,6 @@
     padding: 2rem;
 }
 
-@media (max-width: 1000px) {
-    .login-container{
-        width: 100vw;
-    }
-}
-
 .login-title{
     font-size: 4.5rem;
     color: #0d1824;
@@ -139,6 +133,7 @@
 .login-forgot-password{
     color: #004177;
     margin-top: 0.5rem;
+    font-size: 0.8rem;
 }
 
 .forgot-password-link{
@@ -169,4 +164,13 @@
     cursor: pointer;
     background-color: #005eac;
     transition: ease-in-out 0.3s;
+}
+
+@media (max-width: 1000px) {
+    .login-container{
+        width: 100vw;
+    }
+    .login-form{
+        padding: 2rem 1rem 0;
+    }
 }
