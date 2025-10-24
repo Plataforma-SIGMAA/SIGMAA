@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Curso;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,8 +25,33 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'nome' => fake()->name(),
+            'matricula' => fake()->unique()->numerify('##########'),
+            'cpf' => fake()->unique()->numerify('###.###.###-##'),
+            'rg' => fake()->unique()->numerify('#########'),
+            'telefone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
+            'data_nasc' => fake()->dateTimeBetween('-50 years', '-14 years')->format('Y-m-d'),
+            'foto' => null,
+            'pai' => fake()->name('male'),
+            'mae' => fake()->name('female'),
+            'sexo' => fake()->randomElement(['Macho', 'Fêmea', 'Intersexo']),
+            'etnia' => fake()->randomElement(['Branca', 'Preta', 'Parda', 'Amarela', 'Indígena']),
+            'nacionalidade' => 'Brasileira',
+            'naturalidade' => fake()->city(),
+            'pais' => 'Brasil',
+            'uf' => fake()->stateAbbr(),
+            'cep' => fake()->numerify('#####-###'),
+            'bairro' => fake()->citySuffix(),
+            'rua' => fake()->streetName(),
+            'numero_casa' => fake()->buildingNumber(),
+            'nivel' => fake()->randomElement(['Aluno', 'Professor', 'Coordenador']),
+            'curso_id' => function (array $attributes) {
+                if ($attributes['nivel'] === 'Professor') {
+                    return null;
+                }
+                return Curso::inRandomOrder()->value('id');
+            },
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),

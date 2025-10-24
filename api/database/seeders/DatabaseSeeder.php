@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +20,13 @@ class DatabaseSeeder extends Seeder
             TarefaSeeder::class,
             TopicoSeeder::class,
             TrimestreSeeder::class,
+
+            CursoSeeder::class,
+            UserSeeder::class,
+            DisciplinaSeeder::class,
+            Plano_EnsinoSeeder::class,
+            AvaliacaoSeeder::class,
+            
         ]);
     }
 }
