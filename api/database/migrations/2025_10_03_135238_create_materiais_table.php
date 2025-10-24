@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('caminho');
             $table->string('data_upload');
-            $table->string('disciplina_id')->constrained('disciplinas');
+            $table->foreignId('disciplina_id')->constrained('disciplinas');
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('is_oculto')->default(false);
             $table->string('icone')->nullable();
             $table->foreignId('curso_id')->constrained('cursos');
-            $table->string('professor_id')->constrained('users');
+            $table->foreignId('professor_id')->constrained('users');
             $table->timestamps();
         });
     }

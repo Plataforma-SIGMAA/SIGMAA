@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('metodos_avaliativos');
             $table->string('criterios_avaliativos');
             $table->string('horario_atendimento');
-            $table->string('disciplina_id')->constrained('disciplinas');
+            $table->foreignId('disciplina_id')->constrained('disciplinas');
 
             $table->timestamps();
         });

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->string('url');
             $table->string('detalhes');
-            $table->string('disciplina_id')->constrained('disciplinas');
+            $table->foreignId('disciplina_id')->constrained('disciplinas');
 
             $table->timestamps();
         });

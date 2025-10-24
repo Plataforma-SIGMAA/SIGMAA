@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('desc');
             $table->date('data');
             $table->string('horario');
-            $table->string('disciplina_id')->constrained('disciplinas');
+            $table->foreignId('disciplina_id')->constrained('disciplinas');
             $table->timestamps();
         });
     }
