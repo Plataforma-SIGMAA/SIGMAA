@@ -19,10 +19,10 @@ class NotaFactory extends Factory
     {
         return [
             'avaliacao' => 'Prova '.$this->faker->word(),
-            'nota_total' => $this->faker->randomFloat(1, 0, 10),
+            'peso' => $this->faker->randomFloat(1, 0, 10),
             'nota_obtida' => $this->faker->randomFloat(1, 0, 10),
             'trimestre_id' => Trimestre::factory(),
-            'is_recuperacao' => $this->faker->default(false),
+            'is_recuperacao' => false,
         ];
     }
 }

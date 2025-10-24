@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->integer('ano');
-            $table->boolean('is_hidden')->default(false);
+            $table->boolean('is_oculto')->default(false);
+            $table->string('icone')->nullable();
             $table->foreignId('curso_id')->constrained('cursos');
             $table->string('professor_id')->constrained('users');
             $table->timestamps();

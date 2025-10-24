@@ -19,7 +19,7 @@ class TrimestreFactory extends Factory
     {
         return [
             'numero' => $this->faker->randomElement([1, 2, 3]),
-            'disciplina_aluno_id' => DisciplinaEstudante::factory(),
+            'disciplina_estudante_id' => DisciplinaEstudante::factory(),
         ];
     }
 }

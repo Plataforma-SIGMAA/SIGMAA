@@ -6,6 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 
 class User extends Authenticatable
 {
@@ -18,26 +22,27 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-'nome',
-'matricula',
-'cpf',
-'rg',
-'telefone',
-'data_nasc',
-'pai',
-'mae',
-'sexo',
-'etnia',
-'nacionalidade',
-'naturalidade',
-'pais',
-'uf',
-'cep',
-'bairro',
-'rua',
-'numero_casa',
-'nivel',
-'curso_id,'    ];
+        'nome',
+        'matricula',
+        'cpf',
+        'rg',
+        'telefone',
+        'data_nasc',
+        'pai',
+        'mae',
+        'sexo',
+        'etnia',
+        'nacionalidade',
+        'naturalidade',
+        'pais',
+        'uf',
+        'cep',
+        'bairro',
+        'rua',
+        'numero_casa',
+        'nivel',
+        'curso_id,'
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -61,4 +66,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function curso():BelongsTo{
+        return $this->belongsTo(Curso::class);
+    }
+
+    public function disciplinasEstudantes():HasMany{
+        return $this->hasMany(DisciplinaEstudante::class);
+    }
+
+    public function tarefasEnviadas():HasMany{
+        return $this->hasMany(DisciplinaEstudante::class);
+    }
+
 }

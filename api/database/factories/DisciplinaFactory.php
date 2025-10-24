@@ -19,9 +19,13 @@ class DisciplinaFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => fake()->words(3, true),
+            'nome' => fake()->randomElement([
+                'Biologia', 'Química', 'Geografia', 'Matemática', 'Português', 
+                'Física', 'História', 'Educação Física'
+            ]),
             'ano' => fake()->numberBetween(2020, 2025),
-            'is_hidden' => false,
+            'is_oculto' => false,
+            'icone' => null,
             'curso_id' => Curso::inRandomOrder()->value('id'),
             'professor_id' => User::where('nivel', 'Professor')->inRandomOrder()->value('id'),
         ];

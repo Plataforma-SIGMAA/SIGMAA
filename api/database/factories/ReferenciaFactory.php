@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Disciplina;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

@@ -20,7 +20,7 @@ class TarefaEnviadaFactory extends Factory
     {
         return [
             'data_entrega' => $this->faker->dateTimeBetween('-1 week', 'now'),
-            'aluno_id' => User::factory(),
+            'estudante_id' => User::factory(),
             'tarefa_id' => Tarefa::factory(),
         ];
     }

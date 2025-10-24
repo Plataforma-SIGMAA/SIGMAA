@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Disciplina;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class DisciplinaEstudanteFactory extends Factory
     public function definition(): array
     {
         return [
-            'aluno_id' => User::factory(),
+            'estudante_id' => User::factory(),
             'disciplina_id' => Disciplina::factory(),
         ];
     }

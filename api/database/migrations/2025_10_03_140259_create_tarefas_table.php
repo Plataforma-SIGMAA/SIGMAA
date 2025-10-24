@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('desc');
-            $table->string('data_entrega');
+            $table->string('data_prazo');
             $table->string('tipo');            
             $table->string('disciplina_id')->constrained('disciplinas');
             $table->timestamps();
