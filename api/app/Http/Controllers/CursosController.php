@@ -35,7 +35,7 @@ class CursosController extends Controller
         }
 
     
-        return response()->json(['message' => 'Curso criado com sucesso!'])
+        return response()->json(['message' => 'Curso criado com sucesso!']);
     }
 
     public function show(string $id)

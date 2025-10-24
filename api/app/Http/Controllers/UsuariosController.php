@@ -42,7 +42,7 @@ class UsuariosController extends Controller
             'rua' => 'required|string|max:255',
             'numero_casa' => 'nullable|string|max:10',
             'nivel' => 'required|string|max:255',
-            'curso_id' => 'required'
+            'curso_id' => 'required',
             'password' => 'required'
         ]);
     
@@ -53,7 +53,7 @@ class UsuariosController extends Controller
         }
 
     
-        return response()->json(['message' => 'Usuario criado com sucesso!'])
+        return response()->json(['message' => 'Usuario criado com sucesso!']);
     }
 
     public function show(string $id)
@@ -97,7 +97,7 @@ class UsuariosController extends Controller
             'rua' => 'required|string|max:255',
             'numero_casa' => 'nullable|string|max:10',
             'nivel' => 'required|string|max:255',
-            'curso_id' => 'required'
+            'curso_id' => 'required',
             'password' => 'required'
         ]); 
 

@@ -35,7 +35,7 @@ class DisciplinasController extends Controller
         }
 
     
-        return response()->json(['message' => 'Disciplina criada com sucesso!'])
+        return response()->json(['message' => 'Disciplina criada com sucesso!']);
     }
 
     public function show(string $id)
