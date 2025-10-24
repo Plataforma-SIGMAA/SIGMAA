@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('tarefas_enviadas', function (Blueprint $table) {
             $table->id();
             $table->date('data_entrega');
-            $table->string('tarefa_id')->constrained('tarefas');
-            $table->string('estudante_id')->constrained('users');
+            $table->foreignId('tarefa_id')->constrained('tarefas');
+            $table->foreignId('estudante_id')->constrained('users');
 
             $table->timestamps();
         });

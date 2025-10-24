@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('desc');
             $table->string('data_prazo');
             $table->string('tipo');            
-            $table->string('disciplina_id')->constrained('disciplinas');
+            $table->foreignId('disciplina_id')->constrained('disciplinas');
             $table->timestamps();
         });
     }
