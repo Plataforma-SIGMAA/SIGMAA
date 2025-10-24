@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject; 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -17,9 +20,26 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nome',
+        'matricula',
+        'cpf',
+        'rg',
+        'telefone',
+        'data_nasc',
+        'pai',
+        'mae',
+        'sexo',
+        'etnia',
+        'nacionalidade',
+        'naturalidade',
+        'pais',
+        'uf',
+        'cep',
+        'bairro',
+        'rua',
+        'numero_casa',
+        'nivel',
+        'curso_id,'
     ];
 
     /**
@@ -45,11 +65,18 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
-    /**
-     * Get the identifier that will be stored in the subject claim of the JWT.
-     *
-     * @return mixed
-     */
+    public function curso():BelongsTo{
+        return $this->belongsTo(Curso::class);
+    }
+
+    public function disciplinasEstudantes():HasMany{
+        return $this->hasMany(DisciplinaEstudante::class);
+    }
+
+    public function tarefasEnviadas():HasMany{
+        return $this->hasMany(DisciplinaEstudante::class);
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

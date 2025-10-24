@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('rua');
             $table->string('numero_casa')->nullable();
             $table->string('nivel');
-            $table->foreignId('curso_id')->constrained('cursos');
+            $table->foreignId('curso_id')->nullable()->constrained('cursos');
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

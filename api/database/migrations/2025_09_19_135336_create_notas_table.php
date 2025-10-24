@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
             $table->string('avaliacao');
-            $table->float('nota_max', '4', '2');
+            $table->float('peso', '4', '2');
             $table->float('nota_obtida', '4', '2');
-            $table->boolean('is_recuperation')->default(false);
+            $table->boolean('is_recuperacao')->default(false);
             $table->foreignId('trimestre_id')->constrained('trimestres');
 
             $table->timestamps();
