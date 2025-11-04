@@ -16,9 +16,9 @@ export default function Home() {
       </div>
 
       <div className={styles.conteudoesq}>
-        <h1>Desenvolvimento de Sistemas</h1>
+        <h1 className={styles.titlemateria}>Desenvolvimento de Sistemas</h1>
         <div className={styles.diretorios}>
-          <button className={styles.botaodir}>Participantes</button>
+          <a href="participantes.jsx"><button className={styles.botaodir}>Participantes</button></a>
           <button className={styles.botaodir}>Notas</button>
           <button className={styles.botaodir}>Moodle</button>
         </div>
@@ -30,7 +30,7 @@ export default function Home() {
           </div>
           <h2 className={styles.freq}>Avaliações</h2>
         </div>
-
+      <div className={styles.avaliacoescontainer}>
         <table className={styles.avaliacoes}>
           <thead>
             <tr>
@@ -60,10 +60,15 @@ export default function Home() {
               <td>TIINF - Disciplina</td>
               <td>Prova I</td>
             </tr>
+             <tr>
+              <td>11/09</td>
+              <td>TIINF - Disciplina</td>
+              <td>Prova I</td>
+            </tr>
           </tbody>
         </table>
       </div>
-
+    </div>
       <div className={styles.conteudodir}>
         <h2 className={styles.titulocont}>Conteúdos das aulas</h2>
         <div className={styles.listacont}>
@@ -75,7 +80,7 @@ export default function Home() {
             <strong>Apresentação Sprint 2</strong>
             <p>30/05 - 06/06</p>
           </div>
-          <div className={styles.aula}>
+          <div className={styles.feriado}>
             <strong>Feriado</strong>
             <p>23/05 - 30/05</p>
           </div>
@@ -91,13 +96,14 @@ export default function Home() {
             <strong>Apresentação Sprint 6</strong>
             <p>23/05 - 30/05</p>
           </div>
+          
         </div>
       </div>
 
-      
+  
     </main>
-    <footer className={styles.rodape}>
-    rodapé
+  <footer className={styles.rodape}>
+    Desenvolvido por...
   </footer>
     </>
   );
