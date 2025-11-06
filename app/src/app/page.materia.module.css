@@ -347,7 +347,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-right: 0;
   width: 700px;
-  max-height: 700px;  
+  max-height: 670px;  
   overflow-y: auto;
 }
 
@@ -375,7 +375,7 @@
   border: 2px solid black;
   border-radius: 6px;
   padding: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 30px;
   color: black;
   display: flex;
   flex-direction: column; 
@@ -397,7 +397,8 @@
 
 .aula p,
 .feriado p {
-  color: gray;
+  color: black;
+  font-weight: bold;
   margin: 0;
   font-size: 14px;
   align-self: flex-end; 

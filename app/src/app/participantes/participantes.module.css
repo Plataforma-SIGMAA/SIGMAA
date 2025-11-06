@@ -1,0 +1,160 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.corpo {
+  background-color: #ededed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px; 
+  padding-bottom: 70px; 
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 70px;
+  background-color: rgb(24, 95, 153);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.menu ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul li {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.icon {
+  font-size: 36px !important;
+  cursor: pointer;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.conta {
+  font-size: 36px !important;
+}
+
+.abaixar {
+  font-size: 24px !important;
+}
+
+.conteudo {
+  width: 90%;
+  max-width: 900px;
+}
+
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.container {
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px 25px;
+  margin-bottom: 20px;
+}
+
+.container h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.docente, .aluno {
+  font-size: 28px !important;
+}
+
+.subtitle {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.card {
+  display: flex;
+  align-items: center;
+
+  border-radius: 8px;
+  padding: 10px;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+  background-color: #007bff;
+}
+
+.nome {
+  font-weight: bold;
+  color: black;
+}
+
+.email {
+  color: black;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.rodape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #185f99;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 1000;
+}

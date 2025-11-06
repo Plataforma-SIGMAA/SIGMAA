@@ -1,4 +1,7 @@
 import styles from "./page.materia.module.css";
+import Link from "next/link";
+
+
 
 export default function Home() {
   return (
@@ -18,7 +21,10 @@ export default function Home() {
       <div className={styles.conteudoesq}>
         <h1 className={styles.titlemateria}>Desenvolvimento de Sistemas</h1>
         <div className={styles.diretorios}>
-          <a href="participantes.jsx"><button className={styles.botaodir}>Participantes</button></a>
+          <Link href="/participantes">
+              <button className={styles.botaodir}>Participantes</button>
+          </Link>
+
           <button className={styles.botaodir}>Notas</button>
           <button className={styles.botaodir}>Moodle</button>
         </div>
@@ -96,7 +102,10 @@ export default function Home() {
             <strong>Apresentação Sprint 6</strong>
             <p>23/05 - 30/05</p>
           </div>
-          
+          <div className={styles.aula}>
+            <strong>Apresentação Sprint 6</strong>
+            <p>23/05 - 30/05</p>
+          </div>
         </div>
       </div>
 
