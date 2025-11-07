@@ -118,6 +118,7 @@
     background-color: #ffffff;
     border: 3px solid #0d1824;
     border-radius: 10px;
+    color: #0d1824;
 }
 
 .login-input:focus{
