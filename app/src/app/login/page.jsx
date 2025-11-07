@@ -12,11 +12,16 @@ export default function LoginPage() {
 
   async function handleLogin(e) {
     e.preventDefault();
-    try {
-      await api.post("/auth/login", { email, password });
+    if (email == "" || password == "") {
+        console.log("a")
+        Toast.error("Ambos campos devem estar preenchidos")
+        return 
+      }
+    const result = await api.post("/auth/login", { email, password });
+    if (result.status == 200) {
       window.location.href = "/dashboard";
-    } catch () {
-      Toast.error("Login inválido");
+    } else {
+      Toast.error("Os campos estão errados")
     }
   }
 

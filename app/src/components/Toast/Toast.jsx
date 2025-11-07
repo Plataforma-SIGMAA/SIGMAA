@@ -64,10 +64,10 @@ const showToast = (
 
   return toast(content, {
     type: type === "question" ? "default" : type,
-    theme: "dark",
+    theme: "light",
     position: "bottom-right",
-    autoClose: 1500,
-    hideProgressBar: !timerProgressBar,
+    autoClose: 2000,
+    hideProgressBar: false,
     ...toastOptions,
   });
 };
