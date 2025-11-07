@@ -3,6 +3,8 @@
 import { useState } from "react";
 import api from "@/lib/api";
 import "./login.css";
+import { Toast } from "@/components/Toast/Toast";
+import Loader from "@/components/Loader/Loader";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -13,8 +15,8 @@ export default function LoginPage() {
     try {
       await api.post("/auth/login", { email, password });
       window.location.href = "/dashboard";
-    } catch (err) {
-      alert("Login inválido");
+    } catch () {
+      Toast.error("Login inválido");
     }
   }
 
