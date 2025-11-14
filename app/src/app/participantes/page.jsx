@@ -84,6 +84,55 @@ export default function Participantes() {
         <p className={styles.email}>ronaldo@gmail.com</p>
       </div>
     </div>
+
+    <div className={styles.card}>
+      <img src="/img/ronaldo.png" alt="Ronaldo" />
+      <div>
+        <p className={styles.nome}>Ronaldo</p>
+        <p className={styles.email}>ronaldo@gmail.com</p>
+      </div>
+    </div>
+
+    <div className={styles.card}>
+      <img src="/img/ronaldo.png" alt="Ronaldo" />
+      <div>
+        <p className={styles.nome}>Ronaldo</p>
+        <p className={styles.email}>ronaldo@gmail.com</p>
+      </div>
+    </div>
+
+    <div className={styles.card}>
+      <img src="/img/ronaldo.png" alt="Ronaldo" />
+      <div>
+        <p className={styles.nome}>Ronaldo</p>
+        <p className={styles.email}>ronaldo@gmail.com</p>
+      </div>
+    </div>
+
+    <div className={styles.card}>
+      <img src="/img/ronaldo.png" alt="Ronaldo" />
+      <div>
+        <p className={styles.nome}>Ronaldo</p>
+        <p className={styles.email}>ronaldo@gmail.com</p>
+      </div>
+    </div>
+
+    <div className={styles.card}>
+      <img src="/img/ronaldo.png" alt="Ronaldo" />
+      <div>
+        <p className={styles.nome}>Ronaldo</p>
+        <p className={styles.email}>ronaldo@gmail.com</p>
+      </div>
+    </div>
+
+
+    <div className={styles.card}>
+      <img src="/img/ronaldo.png" alt="Ronaldo" />
+      <div>
+        <p className={styles.nome}>Ronaldo</p>
+        <p className={styles.email}>ronaldo@gmail.com</p>
+      </div>
+    </div>
   </div>
 </section>
         </div>
