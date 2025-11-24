@@ -15,7 +15,7 @@ export default function LoginPage() {
     try {
       await api.post("/auth/login", { email, password });
       window.location.href = "/dashboard";
-    } catch () {
+    } catch (error){console.log(error);} {
       Toast.error("Login inválido");
     }
   }
@@ -57,7 +57,7 @@ export default function LoginPage() {
           </div>
 
           <button type="submit" className="login-button">
-            Entrar
+           <a href="./materia">Entrar</a> 
           </button>
         </form>
       </div>
