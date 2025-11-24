@@ -135,7 +135,9 @@ export default function Participantes() {
     </div>
   </div>
 </section>
+  
         </div>
+          <a className={styles.voltar} href="./materia">Voltar</a>
       </main>
 
       <footer className={styles.rodape}>
