@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Tarefa;
-use App\Models\User;
+use App\Models\Usuario as User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Usuario>
  */
-class UserFactory extends Factory
+class UsuarioFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -45,15 +45,15 @@ class UserFactory extends Factory
             'bairro' => fake()->citySuffix(),
             'rua' => fake()->streetName(),
             'numero_casa' => fake()->buildingNumber(),
-            'nivel' => fake()->randomElement(['Aluno', 'Professor', 'Coordenador']),
+            'tipo' => fake()->randomElement(['Aluno', 'Professor', 'Administrador']),
             'curso_id' => function (array $attributes) {
-                if ($attributes['nivel'] === 'Professor') {
+                if ($attributes['tipo'] === 'Professor') {
                     return null;
                 }
                 return Curso::inRandomOrder()->value('id');
             },
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
     }
@@ -63,7 +63,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }

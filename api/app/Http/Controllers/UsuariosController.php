@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Models\User;
+use Models\Usuario as Usuario;
 
 class UsuariosController extends Controller
 {
@@ -12,7 +12,7 @@ class UsuariosController extends Controller
         $usuarios = Usuario::all();
 
         if ($usuarios->isEmpty()) {
-            return response()->json(['message' => 'Nenhum Usuario encontrado'], 404);
+            return response()->json(['message' => 'Nenhum usuário encontrado'], 404);
         }
 
         return response()->json($usuarios, 200);
@@ -45,15 +45,15 @@ class UsuariosController extends Controller
             'curso_id' => 'required',
             'password' => 'required'
         ]);
-    
+
         $usuario = usuario::create($validated);
 
         if (!$usuario) {
-            return response()->json(['message' => 'Erro ao criar usuario'], 401);
+            return response()->json(['message' => 'Erro ao criar usuário'], 401);
         }
 
-    
-        return response()->json(['message' => 'Usuario criado com sucesso!']);
+
+        return response()->json(['message' => 'Usuário criado com sucesso!']);
     }
 
     public function show(string $id)
@@ -65,7 +65,7 @@ class UsuariosController extends Controller
         $usuario = Usuario::find($id);
 
         if (!$usuario) {
-            return response()->json(['message' => 'Usuario não encontrado'], 404);
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
         }
 
         return response()->json($usuario, 200);
@@ -74,7 +74,7 @@ class UsuariosController extends Controller
     public function update(Request $request, string $id)
     {
         $usuario = Usuario::findOrFail($id);
-    
+
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'matricula' => 'required|string|max:255',
@@ -99,7 +99,7 @@ class UsuariosController extends Controller
             'nivel' => 'required|string|max:255',
             'curso_id' => 'required',
             'password' => 'required'
-        ]); 
+        ]);
 
         if (!$usuario) {
             return response()->json(['message' => 'Usuário não encontrado'], 404);
@@ -116,13 +116,13 @@ class UsuariosController extends Controller
     public function destroy(string $id)
     {
         $usuario = usuario::findOrFail($id);
-        
+
         return redirect()->route('usuarios.index')->with('success', 'Usuário excluído com sucesso!');
 
         if (!$usuario) {
             return response()->json(['message' => 'Usuário não encontrado'], 404);
         }
-        
+
         $usuario->delete();
 
         return response()->json(['message' => 'Usuário excluído com sucesso!'], 200);

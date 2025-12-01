@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Curso;
-use App\Models\User;
+use App\Models\Usuario as User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,14 +20,20 @@ class DisciplinaFactory extends Factory
     {
         return [
             'nome' => fake()->randomElement([
-                'Biologia', 'Química', 'Geografia', 'Matemática', 'Português', 
-                'Física', 'História', 'Educação Física'
+                'Biologia',
+                'Química',
+                'Geografia',
+                'Matemática',
+                'Português',
+                'Física',
+                'História',
+                'Educação Física'
             ]),
             'ano' => fake()->numberBetween(2020, 2025),
             'is_oculto' => false,
             'icone' => null,
             'curso_id' => Curso::inRandomOrder()->value('id'),
-            'professor_id' => User::where('nivel', 'Professor')->inRandomOrder()->value('id'),
+            'professor_id' => User::where('tipo', 'Professor')->inRandomOrder()->value('id'),
         ];
     }
 }

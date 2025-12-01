@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class Usuario extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
@@ -22,6 +22,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'nome',
         'matricula',
+        'email',
         'cpf',
         'rg',
         'telefone',
@@ -38,7 +39,7 @@ class User extends Authenticatable implements JWTSubject
         'bairro',
         'rua',
         'numero_casa',
-        'nivel',
+        'tipo',
         'curso_id,'
     ];
 
@@ -65,15 +66,18 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
-    public function curso():BelongsTo{
+    public function curso(): BelongsTo
+    {
         return $this->belongsTo(Curso::class);
     }
 
-    public function disciplinasEstudantes():HasMany{
+    public function disciplinasEstudantes(): HasMany
+    {
         return $this->hasMany(DisciplinaEstudante::class);
     }
 
-    public function tarefasEnviadas():HasMany{
+    public function tarefasEnviadas(): HasMany
+    {
         return $this->hasMany(DisciplinaEstudante::class);
     }
 
@@ -81,7 +85,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->getKey();
     }
- 
+
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *

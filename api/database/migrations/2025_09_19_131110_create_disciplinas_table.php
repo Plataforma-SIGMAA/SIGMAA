@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,7 +17,7 @@ return new class extends Migration
             $table->boolean('is_oculto')->default(false);
             $table->string('icone')->nullable();
             $table->foreignId('curso_id')->constrained('cursos');
-            $table->foreignId('professor_id')->constrained('users');
+            $table->foreignId('professor_id')->constrained('usuarios');
             $table->timestamps();
         });
     }
