@@ -1,0 +1,289 @@
+.container {
+  display: flex;
+  padding: 30px;
+  gap: 30px;
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Impede scroll horizontal no container principal */
+}
+
+.disciplinesSection {
+  flex: 3;
+  min-width: 0; /* Permite que o flex item shrink corretamente */
+}
+
+/* Scroll lateral para disciplinas */
+.disciplinesGridScrollable {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+/* Scroll vertical para links e atividades */
+.linksScrollable,
+.activitiesScrollable {
+  overflow-y: auto;
+  max-height: 400px;
+  width: 100%;
+}
+
+.sectionTitle {
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.disciplinesGrid {
+  display: grid;
+  background-color: #ffffff;
+  padding: 1em;
+  min-height: 70vh;
+  border: 3px solid #a7a7a7;
+  border-radius: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  width: max-content; /* Permite que a grid expanda conforme necessário */
+  min-width: 100%; /* Garante que ocupa pelo menos 100% do container */
+  box-sizing: border-box;
+}
+
+/* Ajuste de espaçamento quando há poucos itens */
+.disciplinesGrid:has(.disciplineCard:nth-child(1):nth-last-child(1)),
+.disciplinesGrid:has(.disciplineCard:nth-child(2):nth-last-child(1)),
+.disciplinesGrid:has(.disciplineCard:nth-child(3):nth-last-child(1)) {
+  gap: 0.5em;
+  width: 100%; /* Quando poucos itens, ocupa 100% sem scroll */
+  min-width: auto;
+}
+
+.disciplinesGrid:has(.disciplineCard:nth-child(1):nth-last-child(1)) {
+  grid-template-columns: 1fr;
+}
+
+.disciplinesGrid:has(.disciplineCard:nth-child(2):nth-last-child(1)) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.disciplineCard {
+  background-color: #007bff;
+  border-radius: 8px;
+  height: 150px;
+  border: 2px solid #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 200px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.disciplineContent {
+  background-color: #f5f5f5;
+  max-width: 100%;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1em;
+  font-size: 1rem;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.moreOptions {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.sidebar {
+  margin-top: 45px;
+  padding: 30px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px; /* Limita a largura máxima da sidebar */
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  box-sizing: border-box;
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.linksCard {
+  background-color: #007bff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  height: 40px;
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.activitiesContainer {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.activitiesTitle {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.activityItem {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+  margin-bottom: 15px;
+}
+
+.activityDate {
+  font-weight: bold;
+}
+
+.activityType {
+  color: #666;
+  text-align: right;
+}
+
+.moreActivitiesButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.moreActivitiesButton:hover {
+  background-color: #0056b3;
+}
+
+/* Estilização da barra de scroll */
+.disciplinesGridScrollable::-webkit-scrollbar,
+.linksScrollable::-webkit-scrollbar,
+.activitiesScrollable::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.disciplinesGridScrollable::-webkit-scrollbar-track,
+.linksScrollable::-webkit-scrollbar-track,
+.activitiesScrollable::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.disciplinesGridScrollable::-webkit-scrollbar-thumb,
+.linksScrollable::-webkit-scrollbar-thumb,
+.activitiesScrollable::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.disciplinesGridScrollable::-webkit-scrollbar-thumb:hover,
+.linksScrollable::-webkit-scrollbar-thumb:hover,
+.activitiesScrollable::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .disciplinesSection {
+    width: 100%;
+  }
+
+  .sidebar {
+    min-width: auto;
+    max-width: 100%;
+    margin-top: 20px;
+    gap: 50px;
+    padding: 20px;
+  }
+
+  .disciplinesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    min-width: auto;
+  }
+
+  .disciplinesGrid:has(.disciplineCard:nth-child(1):nth-last-child(1)),
+  .disciplinesGrid:has(.disciplineCard:nth-child(2):nth-last-child(1)) {
+    grid-template-columns: 1fr;
+    gap: 0.3em;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .disciplinesGrid {
+    grid-template-columns: 1fr;
+    padding: 0.8em;
+    min-height: 60vh;
+  }
+
+  .disciplinesGrid:has(.disciplineCard:nth-child(1):nth-last-child(1)),
+  .disciplinesGrid:has(.disciplineCard:nth-child(2):nth-last-child(1)),
+  .disciplinesGrid:has(.disciplineCard:nth-child(3):nth-last-child(1)) {
+    grid-template-columns: 1fr;
+    gap: 0.3em;
+  }
+
+  .sidebar {
+    padding: 15px;
+    gap: 40px;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+}

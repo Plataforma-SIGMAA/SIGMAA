@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use App\Models\User;
+use App\Models\Usuario as User;
 
 uses(TestCase::class, RefreshDatabase::class);
 

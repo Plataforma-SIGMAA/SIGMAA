@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\User;
+use App\Models\Usuario as User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
 
             CursoSeeder::class,
-            UserSeeder::class,
+            UsuarioSeeder::class,
             DisciplinaSeeder::class,
             Plano_EnsinoSeeder::class,
             AvaliacaoSeeder::class,
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             ReferenciaSeeder::class,
             TarefaSeeder::class,
             TarefaEnviadaSeeder::class,
-            TopicoSeeder::class,            
+            TopicoSeeder::class,
         ]);
     }
 }

@@ -2,24 +2,19 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://localhost:8000/api",
-  withCredentials: true, // cookies HttpOnly
-}); 
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-// em caso de cookie expirado
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    if (error.response?.status === 401) {
-      try {
-        await axios.post("http://localhost:8000/api/refresh", {}, { withCredentials: true });
-        return api(error.config);
-      } catch (refreshError) {
-        console.error("Sessão expirada, redirecionando para login...");
-        window.location.href = "/login";
-      }
-    }
-    return Promise.reject(error);
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("authToken");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-);
+
+  return config;
+});
 
 export default api;

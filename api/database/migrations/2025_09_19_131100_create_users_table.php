@@ -4,17 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->string('matricula')->unique();
+            $table->enum('tipo', ['Aluno', 'Professor', 'Administrador']);
             $table->string('cpf', '14')->unique();
             $table->string('rg', '10')->unique()->nullable();
             $table->string('telefone')->nullable();
@@ -33,7 +33,6 @@ return new class extends Migration
             $table->string('bairro');
             $table->string('rua');
             $table->string('numero_casa')->nullable();
-            $table->string('nivel');
             $table->foreignId('curso_id')->nullable()->constrained('cursos');
 
             $table->timestamp('email_verified_at')->nullable();
