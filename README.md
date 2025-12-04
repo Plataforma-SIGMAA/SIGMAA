@@ -5,7 +5,6 @@
   <img src="https://img.shields.io/static/v1?label=Laravel&message=API%20Backend&color=red&style=for-the-badge&logo=laravel"/>
   <img src="https://img.shields.io/static/v1?label=Next.js&message=Frontend&color=black&style=for-the-badge&logo=nextdotjs"/>
   <img src="https://img.shields.io/static/v1?label=React&message=Frontend&color=blue&style=for-the-badge&logo=react"/>
-  <img src="https://img.shields.io/static/v1?label=CSS&message=Estilização&color=purple&style=for-the-badge&logo=css"/>
 
   <img src="https://img.shields.io/static/v1?label=MySQL&message=Database&color=blue&style=for-the-badge&logo=mysql"/>
   <img src="https://img.shields.io/static/v1?label=JWT&message=Authentication&color=darkgreen&style=for-the-badge&logo=jsonwebtokens"/>
@@ -23,16 +22,27 @@
 ### Tópicos
 
 🔹 [Descrição do projeto](#descrição-do-projeto)
+
 🔹 [Funcionalidades](#funcionalidades)
+
 🔹 [Layout da aplicação](#layout-da-aplicação)
+
 🔹 [Pré-requisitos](#pré-requisitos)
+
 🔹 [Como rodar a aplicação](#como-rodar-a-aplicação)
+
 🔹 [Como rodar os testes](#como-rodar-os-testes-do-backend)
+
 🔹 [Casos de uso](#casos-de-uso)
+
 🔹 [JSON de usuários](#json)
-🔹 [Linguagens, dependências e bibliotecas](#linguagens-dependências-e-bibliotecas-utilizadas-)
+
+🔹 [Linguagens, dependências e bibliotecas](#linguagens-dependências-e-bibliotecas-utilizadas)
+
 🔹 [Tarefas em aberto](#tarefas-em-aberto)
+
 🔹 [Desenvolvedores](#desenvolvedores-octocat)
+
 🔹 [Licença](#licença)
 
 ## Descrição do projeto
@@ -184,7 +194,6 @@ Lembre-se de passar todos os campos necessários para o banco
 - O professor gerencia notas, frequências e atividades.
 - O aluno visualiza suas informações acadêmicas (disciplinas, participantes dela, suas notas e suas frequências).
 - Os usuários (administradores, professores e alunos) fazem login.
--
 
 ## JSON
 
@@ -272,4 +281,4 @@ Copyright ©️ 2025 - SIGMAA
 
 ## Referência de Estrutura
 
-Modelo de documentação baseado neste [template](https://gist.github.com/reginadiana/e044fe93ed81aa04a10361cb841c0409)
+Modelo de documentação baseado neste [template](https://gist.github.com/reginadiana/e044fe93ed81aa04a10361cb841c0409).
