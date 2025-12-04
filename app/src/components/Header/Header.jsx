@@ -33,7 +33,7 @@ const Header = ({ name }) => {
   };
 
   return (
-    <header className={styles.menu}>
+    <header className={styles.menu} style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000 }}>
       <ul>
         <li
           className={styles.perfil}
@@ -60,6 +60,12 @@ const Header = ({ name }) => {
             role="menu"
             aria-hidden={!open}
           >
+            <li role="none">
+              <a role="menuitem" href="/home" tabIndex={open ? 0 : -1}>
+                <span className="material-symbols-outlined">home</span>
+                Início
+              </a>
+            </li>
             <li role="none">
               <a role="menuitem" href="/configuracoes" tabIndex={open ? 0 : -1}>
                 <span className="material-symbols-outlined">settings</span>
