@@ -25,6 +25,7 @@ class UsuariosController extends Controller
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'matricula' => 'required|string|max:255',
+            'tipo' => 'required|in:Aluno,Professor,Administrador',
             'cpf' => 'required|numeric:strict|max:14',
             'rg' => 'nullable|numeric:strict|max:10',
             'telefone' => 'nullable',
@@ -33,7 +34,7 @@ class UsuariosController extends Controller
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'pai' => 'required|string|max:255',
             'mae' => 'required|string|max:255',
-            'sexo' => 'required|in:masculino,feminino,intersexo',
+            'sexo' => 'required|in:Macho,Fêmea,Intersexo',
             'etnia' => 'required|in:Branca,Preta,Parda,Amarela,Indígena',
             'nacionalidade' => 'required|string|max:255',
             'naturalidade' => 'required|string|max:255',
@@ -43,7 +44,6 @@ class UsuariosController extends Controller
             'bairro' => 'required|string|max:255',
             'rua' => 'required|string|max:255',
             'numero_casa' => 'nullable|string|max:10',
-            'nivel' => 'required|string|max:255',
             'curso_id' => 'required',
             'password' => 'required'
         ]);
