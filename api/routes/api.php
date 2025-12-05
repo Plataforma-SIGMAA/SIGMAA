@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DisciplinasEstudantesController;
+use App\Http\Controllers\NotasController;
 
 Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
@@ -13,3 +15,5 @@ Route::prefix('auth')->group(function () {
         Route::post('/profile', [AuthController::class, 'profile']);
     });
 });
+
+Route::get('/notas/{id}', [DisciplinasEstudantesController::class, 'find']);
