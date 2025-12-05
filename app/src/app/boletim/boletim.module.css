@@ -5,61 +5,6 @@ body {
   font-family: Arial, sans-serif;
   background-color: white;
 }
-.menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-  height: 70px;
-  background-color: rgb(24, 95, 153);
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.menu ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.corpo {
-  background-color: #ededed;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 100px; 
-  padding-bottom: 70px; 
-}
-
-.menu ul li {
-  display: flex;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-}
-
-.icon {
-  font-size: 36px !important;
-  cursor: pointer;
-}
-
-.perfil {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  color: white;
-  font-size: 18px;
-  font-weight: 500;
-}
 
 .conta {
   font-size: 36px !important;
@@ -95,11 +40,12 @@ body {
   box-shadow: none !important;
 }
 
-.main, .corpo {
-  padding-bottom: 80px; 
+.container {
+    margin-top: 70px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
 }
-
-
 
 .tabela-container {
     width: 500px;
