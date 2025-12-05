@@ -14,7 +14,6 @@ class UsuarioSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
         User::create([
             'nome' => 'Admin',
             'email' => 'admin@escola.com',
@@ -88,7 +87,8 @@ class UsuarioSeeder extends Seeder
             'bairro' => 'Funcionários',
             'rua' => 'Rua Terciária',
             'numero_casa' => '789',
-            'curso_id' => null,
+            'curso_id' => 1,
         ]);
+        User::factory(10)->create();
     }
 }

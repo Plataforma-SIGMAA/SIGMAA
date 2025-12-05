@@ -2,6 +2,7 @@
 
 import api from "@/lib/api";
 import { createContext, useContext, useEffect, useState } from "react";
+import Loader from "@/components/Loader/Loader";
 import { useRouter, usePathname } from "next/navigation";
 import { Alert } from "@/components/Alert/Alert";
 import { Toast } from "@/components/Toast/Toast";
@@ -145,13 +146,32 @@ export const AppProvider = ({ children }) => {
     router.replace("/login");
   };
 
+  const refreshProfile = async () => {
+    if (!authToken) return;
+    try {
+      const data = await api.post("/auth/profile", null, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+
+      const userData = data.data?.data ?? data.data;
+      localStorage.setItem("user", JSON.stringify(userData));
+      setUser(userData);
+    } catch (error) {
+      console.error("Erro ao atualizar perfil:", error);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
         login,
         register,
         logout,
+        refreshProfile,
         isLoading,
+        // removed isRefreshing to disable top loading bar behavior
         authToken,
         user,
         setUser,
