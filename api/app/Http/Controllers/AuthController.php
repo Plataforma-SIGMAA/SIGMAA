@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avaliacao;
+use App\Models\Curso;
 use App\Models\Disciplina;
 use App\Models\DisciplinaEstudante;
 use App\Models\Usuario as User;
@@ -70,6 +71,10 @@ class AuthController extends BaseController
         $dataFim = Carbon::now()->addDays(15)->endOfDay();
 
         if ($tipo === 'aluno') {
+            $curso = Curso::find($user->curso_id)->pluck('nome')->first() ?? null;
+
+            $userData['curso'] = $curso;
+
             $records = DisciplinaEstudante::where('estudante_id', $user->id)
                 ->with([
                     'disciplina' => function ($q) {
