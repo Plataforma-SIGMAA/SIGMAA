@@ -12,9 +12,10 @@ class Avaliacao extends Model
 
     protected $table = 'avaliacoes';
 
-    protected $fillable = ['desc', 'data', 'horarios', 'disciplina_id'];
+    protected $fillable = ['desc', 'data', 'horario', 'disciplina_id'];
 
     public function disciplina():BelongsTo{
         return $this->belongsTo(Disciplina::class);
     }
 }
+ 
