@@ -214,8 +214,6 @@ const handleSubmit = async () => {
 
 export default Config;
 
-/* =================== COMPONENTES =================== */
-
 const Campo = ({ label, value, readonly }) => (
   <div className={styles.field}>
     <label>{label}</label>
