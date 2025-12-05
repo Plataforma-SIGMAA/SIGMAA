@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./style.module.css";
+import {useApp} from "@/context/AppProvider";
 
 const Header = ({ name }) => {
+  const { user } = useApp();
   const [open, setOpen] = useState(false);
   const closeTimer = useRef(null);
 
@@ -66,6 +68,14 @@ const Header = ({ name }) => {
                 Início
               </a>
             </li>
+            {user && (user.tipo === "Aluno") && (
+              <li role="none">
+                <a role="menuitem" href="/boletim" tabIndex={open ? 0 : -1}>
+                  <span className="material-symbols-outlined">school</span>
+                  Boletim
+                </a>
+              </li>
+            )}
             <li role="none">
               <a role="menuitem" href="/configuracoes" tabIndex={open ? 0 : -1}>
                 <span className="material-symbols-outlined">settings</span>

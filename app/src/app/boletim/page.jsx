@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-       <main className={styles.corpo}>
+        <main className={styles.corpo}>
        <div className={styles.menu}>
         <ul>
           <li><span className={`material-symbols-outlined ${styles.icon}`}>menu</span></li>
@@ -31,24 +31,36 @@ export default function Home() {
         <tbody>
 
     <tr className={styles.linha}>
-        <td className={styles.anos}>2023 - 1º Ano</td>
-        <td className={styles.aprovado}>APROVADO <span className={styles.icon2}>✔</span></td>
-
-        <Link href="#" className={styles.Link}></Link>
+        <td colSpan={2}>
+            <Link href="#" className={styles.linkLinha}>
+                <div className={styles.info}>
+                    <span className={styles.anos}>2023 - 1º Ano</span>
+                    <span className={styles.aprovado}>APROVADO ✔</span>
+                </div>
+            </Link>
+        </td>
     </tr>
 
     <tr className={styles.linha}>
-        <td className={styles.anos}>2024 - 2º Ano</td>
-        <td className={styles.aprovado}>APROVADO <span className={styles.icon2}>✔</span></td>
-
-        <Link href="#" className={styles.Link}></Link>
+        <td colSpan={2}>
+            <Link href="#" className={styles.linkLinha}>
+                <div className={styles.info}>
+                    <span className={styles.anos}>2024 - 2º Ano</span>
+                    <span className={styles.aprovado}>APROVADO ✔</span>
+                </div>
+            </Link>
+        </td>
     </tr>
 
     <tr className={styles.linha}>
-        <td className={styles.anos}>2025 - 3º Ano</td>
-        <td className={styles.matriculado}>MATRICULADO <span className={styles.icon2}>✔</span></td>
-
-        <Link href="/boletimano" className={styles.Link}></Link>
+        <td colSpan={2}>
+            <Link href="/boletimano" className={styles.linkLinha}>
+                <div className={styles.info}>
+                    <span className={styles.anos}>2025 - 3º Ano</span>
+                    <span className={styles.matriculado}>MATRICULADO ✔</span>
+                </div>
+            </Link>
+        </td>
     </tr>
 
 </tbody>
