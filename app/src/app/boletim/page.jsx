@@ -34,21 +34,21 @@ export default function Home() {
         <td className={styles.anos}>2023 - 1º Ano</td>
         <td className={styles.aprovado}>APROVADO <span className={styles.icon2}>✔</span></td>
 
-        <Link href="#" className={styles.fullLink}></Link>
+        <Link href="#" className={styles.Link}></Link>
     </tr>
 
     <tr className={styles.linha}>
         <td className={styles.anos}>2024 - 2º Ano</td>
         <td className={styles.aprovado}>APROVADO <span className={styles.icon2}>✔</span></td>
 
-        <Link href="#" className={styles.fullLink}></Link>
+        <Link href="#" className={styles.Link}></Link>
     </tr>
 
     <tr className={styles.linha}>
         <td className={styles.anos}>2025 - 3º Ano</td>
         <td className={styles.matriculado}>MATRICULADO <span className={styles.icon2}>✔</span></td>
 
-        <Link href="#" className={styles.fullLink}></Link>
+        <Link href="/boletimano" className={styles.Link}></Link>
     </tr>
 
 </tbody>
