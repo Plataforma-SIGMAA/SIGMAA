@@ -1,0 +1,213 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 70px;
+  background-color: rgb(24, 95, 153);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.menu ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.corpo {
+  background-color: #ededed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px; 
+  padding-bottom: 70px; 
+}
+
+.menu ul li {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.icon {
+  font-size: 36px !important;
+  cursor: pointer;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.conta {
+  font-size: 36px !important;
+}
+.abaixar {
+  font-size: 24px !important;
+}
+
+.rodape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #185f99;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: none;
+  box-shadow: none;
+  z-index: 1000;
+}
+
+
+
+.rodape::before,
+.rodape::after {
+  content: none !important;
+  display: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.main, .corpo {
+  padding-bottom: 80px; 
+}
+
+
+
+.tabela-container {
+    width: 500px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.tabela-container h3 {
+    background-color: #1a4f80;
+    color: white;
+    margin: 0;
+    padding: 8px;
+    font-size: 18px;
+    border-radius: 5px 5px 0 0;
+}
+
+.tabela-sigaa {
+    width: 500px;
+    height: 400px;
+    border-collapse: collapse;
+    border: 1px solid gray;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.tabela-sigaa th {
+    background-color: #e0e0e0;
+    padding: 8px;
+    font-size: 15px;
+   
+}
+
+.tabela-sigaa td {
+    padding: 8px;
+    border-bottom: 1px solid gray;
+}
+
+.aprovado {
+    color: green;
+    font-weight: bold;
+}
+
+.matriculado {
+    color: #0066cc;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.btn-cancelar {
+    margin-top: 12px;
+    padding: 6px 16px;
+    background-color: rgb(247, 79, 79);
+   border-radius: 5px;
+   border: 2px solid black;
+    cursor: pointer;
+    border-radius: 4px;
+     width: 200px;
+    height: 50px;
+    font-size: 16px;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.btn-cancelar:hover {
+    transform: scale(1.03);
+    background-color: red;
+   
+}
+
+.title{
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+}
+.anos{
+    color: black;
+    font-size: 25px;
+    
+}
+
+.linha {
+    position: relative; /* necessário para o link absoluto */
+    cursor: pointer;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.linha:hover {
+    transform: scale(1.03);
+    background-color:rgb(126, 188, 238);
+    border-radius: 5px;
+  
+}
+
+/* Link invisível que cobre a linha inteira */
+.fullLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    z-index: 5; /* acima do conteúdo da linha */
+    cursor: pointer;
+    
+}
+
