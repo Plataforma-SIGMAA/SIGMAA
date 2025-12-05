@@ -75,23 +75,23 @@ Assim, a proposta do SIGMAA é facilitar o acesso, manutenção e colaboração 
 
 ### Tela de Login
 
-<img src="api/public/storage/readme/login.png" width="40%" height="40%" alt="Tela de Login">
+<img src="api/storage/app/public/readme/login.png" width="40%" height="40%" alt="Tela de Login">
 
 ### Home - Acadêmico (Aluno ou Professor)
 
-<img src="api/public/storage/readme/academico_prototipo.png" width="40%" height="40%" alt="Visão do Sistema de um Aluno ou Professor">
+<img src="api/storage/app/public/readme/academico_prototipo.png" width="40%" height="40%" alt="Visão do Sistema de um Aluno ou Professor">
 
 ### Home - Administrador
 
-<img src="api/public/storage/readme/admin_prototipo.png" width="40%" height="40%" alt="Visão do Sistema de um Administrador">
+<img src="api/storage/app/public/readme/admin_prototipo.png" width="40%" height="40%" alt="Visão do Sistema de um Administrador">
 
 ### Disciplina
 
-<img src="api/public/storage/readme/disciplina_prototipo.png" width="40%" height="40%" alt="Tela de Disciplina">
+<img src="api/storage/app/public/readme/disciplina_prototipo.png" width="40%" height="40%" alt="Tela de Disciplina">
 
 ### Participantes
 
-<img src="api/public/storage/readme/participantes_prototipo.png" width="40%" height="40%" alt="Tela de Participantes">
+<img src="api/storage/app/public/readme/participantes_prototipo.png" width="40%" height="40%" alt="Tela de Participantes">
 
 ## Pré-requisitos
 
