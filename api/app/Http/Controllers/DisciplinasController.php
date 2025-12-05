@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Models\Disciplina;
+use App\Models\Disciplina;
+use App\Models\Usuario;
 
 class DisciplinasController extends Controller
 {
-    public function index()
-    {
-        $disciplinas = Disciplina::all();
+    public function index(){
+        
+    $disciplinas = Disciplina::with('professor')->get();
 
-        if ($disciplinas->isEmpty()) {
-            return response()->json(['message' => 'Nenhuma disciplina encontrada'], 404);
-        }
+    if ($disciplinas->isEmpty()) {
+        return response()->json(['message' => 'Nenhuma disciplina encontrada'], 404);
+    }
 
-        return response()->json($disciplinas, 200);
+    return response()->json($disciplinas, 200);
     }
 
     public function store(Request $request)
@@ -23,7 +24,8 @@ class DisciplinasController extends Controller
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'ano' => 'required|integer',
-            'is_hidden' => 'required|in:true,false',
+            'is_oculto' => 'required|boolean',
+            'icone' => 'nullable|string|max:255',
             'curso_id' => 'required',
             'professor_id' => 'required',
         ]);
@@ -60,7 +62,8 @@ class DisciplinasController extends Controller
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'ano' => 'required|integer',
-            'is_hidden' => 'required|in:true,false',
+            'is_oculto' => 'required|boolean',
+            'icone' => 'nullable|string|max:255',
             'curso_id' => 'required',
             'professor_id' => 'required',
         ]); 
@@ -69,12 +72,10 @@ class DisciplinasController extends Controller
             return response()->json(['message' => 'Disciplina não encontrada'], 404);
         }
 
-        if (!$disciplina->save()) {
-            return response()->json(['message' => 'Erro ao atualizar disciplina.'], 500);
-        }
-
         $disciplina->update($validated);
+
         return response()->json(['message' => 'Disciplina atualizada com sucesso!'], 200);
+            
     }
 
     public function destroy(string $id)
