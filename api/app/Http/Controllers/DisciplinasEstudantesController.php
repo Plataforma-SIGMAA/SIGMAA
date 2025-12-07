@@ -9,10 +9,6 @@ use User;
 
 class DisciplinasEstudantesController extends Controller
 {
-    public function find($id)
-    {
-        $disciplinas_estudantes = DisciplinaEstudante::where('disciplina_id', $id)->get();
 
-        return response()->json($disciplinas_estudantes, 200);
-    }
+    
 }

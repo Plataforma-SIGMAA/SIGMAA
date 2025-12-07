@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DisciplinasEstudantesController;
 use App\Http\Controllers\NotasController;
 
 Route::prefix('auth')->group(function () {
@@ -16,4 +15,5 @@ Route::prefix('auth')->group(function () {
     });
 });
 
-Route::get('/notas/{id}', [DisciplinasEstudantesController::class, 'find']);
+Route::get('/notas/{id}', [NotasController::class, 'find']);
+Route::post('/notas/salvar', [NotasController::class, 'salvarNotas']);
