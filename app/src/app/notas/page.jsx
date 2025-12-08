@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import api from "@/lib/api";
 import Loader from "@/components/Loader/Loader";
+import styles from "./page.notas.module.css";
 
 export default function Notas() {
   const [disciplina, setDisciplina] = useState([]);
@@ -11,9 +12,7 @@ export default function Notas() {
   const [estudantes, setEstudantes] = useState([]);
   const [trimestre_atual, setTrimestreAtual] = useState(1);
   const [carregando, setCarregando] = useState(true);
-  const [avaliacoes_trimestre, setAvaliacoesPorTrimestre] = useState({
-    1: [], 2: [], 3: []
-  });
+  const [avaliacoes_trimestre, setAvaliacoesPorTrimestre] = useState({ 1: [], 2: [], 3: [] });
   const [editando, setEditando] = useState(false);
   const [notas_editadas, setNotasEditadas] = useState({});
   
@@ -21,9 +20,7 @@ export default function Notas() {
   const id = searchParams.get("id");
 
   useEffect(() => {
-    if (id) {
-      buscarNotas();
-    }
+    if (id) buscarNotas();
   }, [id]);
 
   const extrairAvaliacoesPorTrimestre = (dados) => {
@@ -56,7 +53,7 @@ export default function Notas() {
       setDados(dados_recebidos);
       setEstudantes(estudantes_recebidos);
       setDisciplina(disciplina_recebida);
-      
+
       const avaliacoes = extrairAvaliacoesPorTrimestre(dados_recebidos);
       setAvaliacoesPorTrimestre(avaliacoes);
       
@@ -106,7 +103,7 @@ export default function Notas() {
       }
 
       const avaliacao_aluno = trimestre.notas?.find(n => n.avaliacao === nome_avaliacao);
-      
+
       if (editando && notas_editadas[estudante_id]?.[nome_avaliacao] !== undefined) {
         nota_avaliacao = parseFloat(notas_editadas[estudante_id][nome_avaliacao]) || 0;
       } else {
@@ -156,163 +153,181 @@ export default function Notas() {
   const avaliacoes_atuais = avaliacoes_trimestre[trimestre_atual] || [];
 
   return (
-    <div style={{ padding: "20px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
-        <h1>Notas de {disciplina.nome}</h1>
-        <button
-          onClick={() => {
-            if (editando) {
-              salvarNotas();
-            } else {
-              setEditando(true);
-            }
-          }}
-          style={{
-            padding: "10px 20px",
-            background: editando ? "#28a745" : "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer"
-          }}
-        >
-          {editando ? "Salvar Notas" : "Editar Notas"}
-        </button>
+    <>
+    
+     <main className={styles.corpo}>
+      <div className={styles.menu}>
+        <ul>
+          <li><span className={`material-symbols-outlined ${styles.icon}`}>menu</span></li>
+          <li className={styles.perfil}>
+            Perfil 
+            <span className={`material-symbols-outlined ${styles.conta}`}>account_circle</span>
+            <span className={`material-symbols-outlined ${styles.abaixar}`}>expand_circle_down</span>
+          </li>
+        </ul>
       </div>
-
-      <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-        {[1, 2, 3].map((num) => (
-          <button
-            key={num}
-            onClick={() => {
-              if (editando) {
-                if (window.confirm("Alterar trimestre perderá as alterações não salvas. Continuar?")) {
-                  setEditando(false);
-                  setNotasEditadas({});
-                  setTrimestreAtual(num);
-                }
-              } else {
-                setTrimestreAtual(num);
-              }
-            }}
-            style={{
-              padding: "10px 20px",
-              background: trimestre_atual === num ? "#007bff" : "#f0f0f0",
-              color: trimestre_atual === num ? "white" : "black",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              cursor: "pointer",
-              opacity: editando && trimestre_atual !== num ? 0.5 : 1
-            }}
-            disabled={editando && trimestre_atual !== num}
-          >
-            {num}º Trimestre
-          </button>
-        ))}
-      </div>
-
-      <div style={{ overflowX: "auto" }}>
-        <table border="1" style={{ width: "100%", borderCollapse: "collapse", minWidth: "600px" }}>
-          <thead>
-            <tr style={{ background: "#f2f2f2" }}>
-              <th style={{ padding: "10px", textAlign: "left", minWidth: "150px", position: "sticky", left: 0, background: "#f2f2f2" }}>
-                Aluno
-              </th>
-              
-              {avaliacoes_atuais.map((nome_avaliacao, index) => {
-                let peso_encontrado = 0;
-                for (const estudante of dados) {
-                  const trimestre = estudante.trimestres?.find(t => t.numero === trimestre_atual.toString());
-                  const avaliacao = trimestre?.notas?.find(n => n.avaliacao === nome_avaliacao);
-                  if (avaliacao) {
-                    peso_encontrado = avaliacao.peso;
-                    break;
-                  }
-                }
-
-                return (
-                  <th key={index} style={{ padding: "10px", textAlign: "center", minWidth: "100px" }}>
-                    <div>{nome_avaliacao}</div>
-                    <div style={{ fontSize: "12px", color: "#666", fontWeight: "normal" }}>
-                      Peso: {peso_encontrado}
-                    </div>
-                  </th>
-                );
-              })}
-                            
-              <th style={{ padding: "10px", textAlign: "center", minWidth: "100px", position: "sticky", right: 0, background: "#f2f2f2" }}>
-                Nota Final
-              </th>
-            </tr>
-          </thead>
-          
-          <tbody>
-            {estudantes.length === 0 ? (
-              <tr>
-                <td colSpan={avaliacoes_atuais.length + 2} style={{ padding: "20px", textAlign: "center" }}>
-                  Nenhum estudante encontrado
-                </td>
-              </tr>
-            ) : (
-              estudantes.map((estudante, index) => {
-                const nome = estudante[0];
-                const matricula = estudante[2];
-                const estudante_id = estudante[1];
-                const nota_final = calcularNotaFinal(estudante_id);
-
-                return (
-                  <tr key={index}>
-                    <td style={{ padding: "10px", position: "sticky", left: 0, background: "white" }}>
-                      <strong>{nome}</strong>
-                      <div style={{ fontSize: "12px", color: "#666" }}>
-                        Matrícula: {matricula}
-                      </div>
-                    </td>
-                    
-                    {avaliacoes_atuais.map((nome_avaliacao, idx) => {
-                      const nota_atual = getNotaAvaliacao(estudante_id, nome_avaliacao);
-                      
-                      return (
-                        <td key={idx} style={{ padding: "10px", textAlign: "center" }}>
-                          {editando ? (
-                            <input
-                              type="number"
-                              step="0.1"
-                              min="0"
-                              max="10"
-                              defaultValue={nota_atual !== "-" ? nota_atual : ""}
-                              onChange={(e) => {
-                                const novas_notas = { ...notas_editadas };
-                                if (!novas_notas[estudante_id]) novas_notas[estudante_id] = {};
-                                novas_notas[estudante_id][nome_avaliacao] = e.target.value;
-                                setNotasEditadas(novas_notas);
-                              }}
-                              style={{ 
-                                width: "70px", 
-                                textAlign: "center",
-                                padding: "5px",
-                                border: "1px solid #ccc",
-                                borderRadius: "3px"
-                              }}
-                            />
-                          ) : (
-                            nota_atual
-                          )}
-                        </td>
-                      );
-                    })}
-                    
-                    <td style={{ padding: "10px", textAlign: "center", fontWeight: "bold", position: "sticky", right: 0, background: "white" }}>
-                      {nota_final}
-                    </td>
-                  </tr>
-                );
-              })
-            )}
-          </tbody>
-        </table>
-      </div>
+    
       
-    </div>
+
+      <div className={styles.pagina}>
+        <div className={styles.headerBar}>
+          <h1 className={styles.pageTitle}>{disciplina.nome} - Notas</h1>
+
+          <button
+            className={`${styles.botaoEditar} ${editando ? styles.botaoSalvar : ""}`}
+            onClick={() => {
+              if (editando) salvarNotas();
+              else setEditando(true);
+            }}
+          >
+            {editando ? "Salvar Notas" : "Editar Notas"}
+          </button>
+        </div>
+
+        <div className={styles.contentRow}>
+          <div className={styles.card}>
+            <div className={styles.cardTop}>
+              <div className={styles.tab}>
+                {[1, 2, 3].map((num, idx, arr) => {
+                  const isFirst = idx === 0;
+                  const isLast = idx === arr.length - 1;
+                  return (
+                    <button
+                      key={num}
+                      className={[
+                        styles.botao,
+                        isFirst ? styles.tabFirst : "",
+                        isLast ? styles.tabLast : "",
+                        trimestre_atual === num ? styles.tabActive : ""
+                      ].join(" ").trim()}
+                      onClick={() => {
+                        if (editando) {
+                          if (window.confirm("Alterar trimestre perderá alterações não salvas. Continuar?")) {
+                            setEditando(false);
+                            setNotasEditadas({});
+                            setTrimestreAtual(num);
+                          }
+                        } else {
+                          setTrimestreAtual(num);
+                        }
+                      }}
+                      disabled={editando && trimestre_atual !== num}
+                    >
+                      {num}º TRIMESTRE
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className={styles.cardBody}>
+              <div className={styles.conteudoTabela}>
+                <table className={styles.tabela}>
+                  <thead>
+                    <tr>
+                      <th className={styles.alunoColuna}>Aluno</th>
+
+                      {avaliacoes_atuais.map((nome_avaliacao, index) => {
+                        let peso_encontrado = 0;
+                        for (const estudante of dados) {
+                          const trimestre = estudante.trimestres?.find(
+                            (t) => t.numero === trimestre_atual.toString()
+                          );
+                          const avaliacao = trimestre?.notas?.find(
+                            (n) => n.avaliacao === nome_avaliacao
+                          );
+                          if (avaliacao) {
+                            peso_encontrado = avaliacao.peso;
+                            break;
+                          }
+                        }
+
+                        return (
+                          <th key={index} style={{ textAlign: "center" }}>
+                            <div>{nome_avaliacao}</div>
+                            <div className={styles.pesoText}>Peso: {peso_encontrado}</div>
+                          </th>
+                        );
+                      })}
+
+                      <th className={styles.notaFinalColuna}>Nota Final</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {estudantes.length === 0 ? (
+                      <tr>
+                        <td
+                          colSpan={avaliacoes_atuais.length + 2}
+                          className={styles.noStudent}
+                        >
+                          Nenhum estudante encontrado
+                        </td>
+                      </tr>
+                    ) : (
+                      estudantes.map((estudante, index) => {
+                        const nome = estudante[0];
+                        const matricula = estudante[2];
+                        const estudante_id = estudante[1];
+                        const nota_final = calcularNotaFinal(estudante_id);
+
+                        return (
+                          <tr key={index}>
+                            <td className={styles.alunoColuna}>
+                              <strong>{nome}</strong>
+                              <div className={styles.matriculaText}>
+                                Matrícula: {matricula}
+                              </div>
+                            </td>
+
+                            {avaliacoes_atuais.map((nome_avaliacao, idx) => {
+                              const nota_atual = getNotaAvaliacao(
+                                estudante_id,
+                                nome_avaliacao
+                              );
+
+                              return (
+                                <td key={idx} className={styles.centerCell}>
+                                  {editando ? (
+                                    <input
+                                      type="number"
+                                      step="0.1"
+                                      min="0"
+                                      max="10"
+                                      defaultValue={nota_atual !== "-" ? nota_atual : ""}
+                                      className={styles.inputNota}
+                                      onChange={(e) => {
+                                        const novas_notas = { ...notas_editadas };
+                                        if (!novas_notas[estudante_id])
+                                          novas_notas[estudante_id] = {};
+                                        novas_notas[estudante_id][nome_avaliacao] = e.target.value;
+                                        setNotasEditadas(novas_notas);
+                                      }}
+                                    />
+                                  ) : (
+                                    nota_atual
+                                  )}
+                                </td>
+                              );
+                            })}
+
+                            <td className={styles.notaFinalColuna}>{nota_final}</td>
+                          </tr>
+                        );
+                      })
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+        </main>
+        <footer className={styles.rodape}>
+    Desenvolvido por...
+  </footer>
+    </>
   );
 }
