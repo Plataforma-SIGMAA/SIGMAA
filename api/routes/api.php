@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DisciplinasController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
@@ -11,5 +12,6 @@ Route::prefix('auth')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/refresh', [AuthController::class, 'refresh']);
         Route::post('/profile', [AuthController::class, 'profile']);
+        Route::get('/disciplina/{disciplinaId}/{userId}', [DisciplinasController::class, 'show']);
     });
 });

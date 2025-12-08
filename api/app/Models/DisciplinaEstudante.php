@@ -16,7 +16,7 @@ class DisciplinaEstudante extends Model
     protected $fillable = ['estudante_id', 'disciplina_id'];
 
     public function estudante():BelongsTo{
-        return $this->belongsTo(User::class, 'estudante_id');
+        return $this->belongsTo(Usuario::class, 'estudante_id');
     }
 
     public function disciplina():BelongsTo{

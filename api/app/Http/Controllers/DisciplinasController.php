@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avaliacao;
+use App\Models\DisciplinaEstudante;
+use App\Models\Nota;
+use App\Models\Plano_Ensino;
+use App\Models\Tarefa;
+use App\Models\Trimestre;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
-use Models\Disciplina;
+use App\Models\Disciplina;
+
 
 class DisciplinasController extends Controller
 {
@@ -38,19 +46,46 @@ class DisciplinasController extends Controller
         return response()->json(['message' => 'Disciplina criada com sucesso!']);
     }
 
-    public function show(string $id)
+    public function show(string $disciplinaId, string $userId)
     {
-        if (!is_numeric($id)) {
+        if (!is_numeric($disciplinaId)) {
             return response()->json(['message' => 'ID inválido'], 400);
         }
-
-        $disciplina = Disciplina::find($id);
+        // return $id;
+        $disciplina = Disciplina::find($disciplinaId);
 
         if (!$disciplina) {
             return response()->json(['message' => 'Disciplina não encontrada'], 404);
         }
 
-        return response()->json($disciplina, 200);
+        $avaliacoes = Avaliacao::where('disciplina_id', $disciplinaId)->get();
+        $estudantesIds = DisciplinaEstudante::where('disciplina_id', $disciplinaId)->get();
+        
+        $notasTrimestres = [];
+        $estudantes = [];
+        foreach ($estudantesIds as $estudante) {
+            $estudantes[] = Usuario::find($estudante->estudante->id);
+            if ($estudante->id == $userId) {
+                $trimestres = Trimestre::where('disciplina_estudante_id', $estudante->id)->get();
+                foreach ($trimestres as $trimestre) {
+                    $notas = Nota::find($trimestre->trimestre->id)->get();
+                    $notasTrimestres[] = [$trimestre, $notas];
+                }
+            }
+        }
+
+        $plano = Plano_Ensino::where('disciplina_id', $disciplinaId)->get();
+        $tarefas = Tarefa::where('disciplina_id', $disciplinaId)->get();
+
+        return response()->json([
+            'disciplina' => $disciplina,
+            'plano' => $plano,
+            'avaliacoes' => $avaliacoes,
+            'estudantes' => $estudantes,
+            'tarefas' => $tarefas,
+            'notas' => $notasTrimestres
+        ], 200);
+
     }
 
     public function update(Request $request, string $id)
