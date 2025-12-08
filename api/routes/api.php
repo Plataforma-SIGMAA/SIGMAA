@@ -17,3 +17,5 @@ Route::prefix('auth')->group(function () {
 
 Route::get('/avaliacoes/{id}', [AvaliacaoController::class, 'index']);
 Route::post('/avaliacoes/inserir', [AvaliacaoController::class, 'store']);
+Route::delete('/avaliacoes/{id}', [AvaliacaoController::class, 'destroy']);
+Route::put('/avaliacoes', [AvaliacaoController::class, 'update']);

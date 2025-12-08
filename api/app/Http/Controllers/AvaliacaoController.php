@@ -21,14 +21,11 @@ class AvaliacaoController extends Controller
     public function store(Request $request) 
     {
         $validated = $request->validate([
-            'descricao' => 'required|string|max:255',
+            'desc' => 'required|string|max:255',
             'data' => 'required|date',
             'horario' => 'required|string',
             'disciplina_id' => 'required|integer|exists:disciplinas,id',
         ]);
-
-        // $user = auth()->user();
-        // return view('plans');
 
         $avaliacao = Avaliacao::create($validated);
 
@@ -54,30 +51,21 @@ class AvaliacaoController extends Controller
         return response()->json(["avaliacao"=> $avaliacao] , 200);
     }
 
-    // public function edit($id) 
-    // {
-
-    // }
-
-    public function update(Request $request, string $id) 
+    public function update(Request $request) 
     {
-        $avaliacao = Avaliacao::findOrFail($id);
 
         $validated = $request->validate([
-            'descricao' => 'required|string|max:255',
+            'id' => 'required|integer|exists:avaliacoes,id',
+            'desc' => 'required|string|max:255',
             'data' => 'required|date',
             'horario' => 'required|string',
             'disciplina_id' => 'required|integer|exists:disciplinas,id',
         ]);
 
-        if (!$avaliacao) {
-            return response()->json(['message' => 'Avaliação não encontrada'], 404);
-        }
-
-        if(!$avaliacao->save()) {return response()->json(['message' => 'Erro ao atualizar avaliação'], 401);
-        }
-
+        $avaliacao = Avaliacao::findOrFail($validated['id']);
+        unset($validated['id']);
         $avaliacao->update($validated);
+        
 
         return response()->json(['message' => 'Avaliação atualizada com sucesso!'], 200);
     }
@@ -85,8 +73,6 @@ class AvaliacaoController extends Controller
     public function destroy(string $id)
     {
         $avaliacao = Avaliacao::findOrFail($id);
-
-        // return redirect()->
 
         if (!$avaliacao) {
             return response()->json(['message' => 'Avaliação não encontrada'], 404);

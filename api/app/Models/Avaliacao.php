@@ -18,4 +18,4 @@ class Avaliacao extends Model
         return $this->belongsTo(Disciplina::class);
     }
 }
- 
+  
