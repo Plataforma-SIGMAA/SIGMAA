@@ -15,6 +15,11 @@ export default function Notas() {
   const [avaliacoes_trimestre, setAvaliacoesPorTrimestre] = useState({ 1: [], 2: [], 3: [] });
   const [editando, setEditando] = useState(false);
   const [notas_editadas, setNotasEditadas] = useState({});
+  const [mostrar_modal, setMostrarModal] = useState(false);
+  const [nova_avaliacao, setNovaAvaliacao] = useState({
+    nome: "",
+    peso: 1.0
+  });
   
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
@@ -22,6 +27,10 @@ export default function Notas() {
   useEffect(() => {
     if (id) buscarNotas();
   }, [id]);
+
+  useEffect(() => {
+    setNovaAvaliacao(prev => ({ ...prev }));
+  }, [trimestre_atual]);
 
   const extrairAvaliacoesPorTrimestre = (dados) => {
     const avaliacoes = { 1: new Set(), 2: new Set(), 3: new Set() };
@@ -137,7 +146,7 @@ export default function Notas() {
       });
       
       if (dados_salvar.length > 0) {
-        await api.post('/notas/salvar', { notas: dados_salvar });
+        await api.put('/notas/salvar', { notas: dados_salvar });
       }
       
       setEditando(false);
@@ -145,6 +154,45 @@ export default function Notas() {
       buscarNotas();
     } catch (erro) {
       console.error("Erro ao salvar:", erro);
+    }
+  };
+
+  const adicionarAvaliacao = async () => {
+    if (!nova_avaliacao.nome.trim()) return alert("Digite o nome");
+    
+    const peso_numero = parseFloat(nova_avaliacao.peso);
+    if (isNaN(peso_numero) || peso_numero < 0.1) return alert("Peso inválido");
+
+    
+    const primeiro_estudante = estudantes[0];
+    if (!primeiro_estudante) return alert("Sem estudantes");
+
+    const estudante_id = primeiro_estudante[1];
+    const dados_estudante = dados.find(d => d.estudante_id === estudante_id);
+    
+    if (!dados_estudante?.trimestres) return alert("Estudante sem trimestres");
+    
+    const trimestre = dados_estudante.trimestres.find(t => 
+      t.numero === trimestre_atual.toString()
+    );
+    
+    if (!trimestre) return alert("Trimestre não encontrado");
+
+    try {
+      await api.post('/notas/criar', {
+        avaliacao: nova_avaliacao.nome,
+        peso: peso_numero,
+        nota_obtida: 0,
+        trimestre_id: trimestre.id,
+        is_recuperacao: false
+      });
+      
+      setMostrarModal(false);
+      setNovaAvaliacao({ nome: "", peso: "" });
+      buscarNotas();
+    } catch (erro) {
+      console.error("Erro:", erro);
+      alert("Erro ao criar");
     }
   };
 
@@ -173,15 +221,24 @@ export default function Notas() {
         <div className={styles.headerBar}>
           <h1 className={styles.pageTitle}>{disciplina.nome} - Notas</h1>
 
-          <button
-            className={`${styles.botaoEditar} ${editando ? styles.botaoSalvar : ""}`}
-            onClick={() => {
-              if (editando) salvarNotas();
-              else setEditando(true);
-            }}
-          >
-            {editando ? "Salvar Notas" : "Editar Notas"}
-          </button>
+          <div className={styles.botoesAcao}>
+            <button
+              className={styles.botaoAdicionar}
+              onClick={() => setMostrarModal(true)}
+            >
+              + Nova Avaliação
+            </button>
+            
+            <button
+              className={`${styles.botaoEditar} ${editando ? styles.botaoSalvar : ""}`}
+              onClick={() => {
+                if (editando) salvarNotas();
+                else setEditando(true);
+              }}
+            >
+              {editando ? "Salvar Notas" : "Editar Notas"}
+            </button>
+          </div>
         </div>
 
         <div className={styles.contentRow}>
@@ -325,6 +382,54 @@ export default function Notas() {
         </div>
       </div>
         </main>
+
+        {mostrar_modal && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modalContent}>
+              <h3 className={styles.modalTitle}>Nova Avaliação</h3>
+              
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Nome da avaliação</label>
+                <input
+                  className={styles.formInput}
+                  placeholder="Ex: Prova 1, Trabalho, Seminário"
+                  value={nova_avaliacao.nome}
+                  onChange={(e) => setNovaAvaliacao({...nova_avaliacao, nome: e.target.value})}
+                />
+              </div>
+              
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Peso</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  min="0.1"
+                  className={styles.formInput}
+                  placeholder="1.0"
+                  value={nova_avaliacao.peso}
+                  onChange={(e) => setNovaAvaliacao({...nova_avaliacao, peso: e.target.value})}
+                />
+                <small>Trimestre atual: {trimestre_atual}º</small>
+              </div>
+              
+              <div className={styles.modalBotoes}>
+                <button
+                  className={styles.botaoCancelar}
+                  onClick={() => setMostrarModal(false)}
+                >
+                  Cancelar
+                </button>
+                <button
+                  className={styles.botaoCriar}
+                  onClick={adicionarAvaliacao}
+                >
+                  Criar Avaliação
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        
         <footer className={styles.rodape}>
     Desenvolvido por...
   </footer>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('avaliacao');
             $table->float('peso', '4', '2');
-            $table->float('nota_obtida', '4', '2');
+            $table->float('nota_obtida', '4', '2')->nullable()->default(null);
             $table->boolean('is_recuperacao')->default(false);
             $table->foreignId('trimestre_id')->constrained('trimestres');
 

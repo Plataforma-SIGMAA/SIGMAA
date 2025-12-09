@@ -48,12 +48,12 @@ class NotasController extends Controller
     {
         $validated = $request->validate([
             'avaliacao' => 'required|string|max:255',
-            'peso' => 'required|float',
-            'nota_obtida' => 'required|float',
-            'trimestre_id' => 'required',
-            'is_recuperacao' => 'required|boolean',
+            'peso' => 'required|numeric',
+            'nota_obtida' => 'required|numeric',
+            'trimestre_id' => 'required|exists:trimestres,id',
+            'is_recuperacao' => 'boolean'
         ]);
-    
+
         $nota = Nota::create($validated);
 
         if (!$nota) {
@@ -61,10 +61,10 @@ class NotasController extends Controller
         }
 
     
-        return response()->json(['message' => 'nota criada com sucesso!']);
+        return response()->json(['message' => 'Nota criada com sucesso!']);
     }
 
-    public function salvarNotas(Request $request)
+    public function update(Request $request)
 {
     foreach ($request->notas as $dado) {
         $disciplina_estudante = DisciplinaEstudante::where('disciplina_id', $dado['disciplina_id'])

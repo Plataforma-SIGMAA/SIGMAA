@@ -16,4 +16,5 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::get('/notas/{id}', [NotasController::class, 'find']);
-Route::post('/notas/salvar', [NotasController::class, 'salvarNotas']);
+Route::put('/notas/salvar', [NotasController::class, 'update']);
+Route::post('/notas/criar', [NotasController::class, 'store']);
