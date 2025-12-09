@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('disciplina_id')->constrained('disciplinas');
             $table->timestamps();
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.
