@@ -34,7 +34,7 @@ class TarefasController extends Controller
         }
 
     
-        return response()->json(['message' => 'tarefa criada com sucesso!'])
+        return response()->json(['message' => 'tarefa criada com sucesso!']);
     }
 
     public function show(string $id)

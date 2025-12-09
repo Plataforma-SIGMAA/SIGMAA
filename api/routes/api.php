@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DisciplinasController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,6 @@ Route::prefix('auth')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/refresh', [AuthController::class, 'refresh']);
         Route::post('/profile', [AuthController::class, 'profile']);
-    }); 
+        Route::get('/disciplina/{disciplinaId}/{userId}', [DisciplinasController::class, 'show']);
+    });
 });
-
-Route::get('/avaliacoes/{id}', [AvaliacaoController::class, 'index']);
-Route::post('/avaliacoes/inserir', [AvaliacaoController::class, 'store']);
-Route::delete('/avaliacoes/{id}', [AvaliacaoController::class, 'destroy']);
-Route::put('/avaliacoes', [AvaliacaoController::class, 'update']);

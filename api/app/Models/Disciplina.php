@@ -18,6 +18,10 @@ class Disciplina extends Model
         return $this->belongsTo(Curso::class);
     }
 
+    public function professor():HasOne{
+        return $this->hasOne(Usuario::class, 'professor_id');
+    }
+
     public function plano_ensino():HasOne{
         return $this->hasOne(Plano_Ensino::class);
     }
