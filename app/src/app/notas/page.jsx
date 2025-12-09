@@ -389,7 +389,7 @@ export default function Notas() {
               <h3 className={styles.modalTitle}>Nova Avaliação</h3>
               
               <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Nome da avaliação</label>
+                <label className={styles.formLabel}>Nome da avaliação:</label>
                 <input
                   className={styles.formInput}
                   placeholder="Ex: Prova 1, Trabalho, Seminário"
@@ -399,7 +399,7 @@ export default function Notas() {
               </div>
               
               <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Peso</label>
+                <label className={styles.formLabel}>Peso:</label>
                 <input
                   type="number"
                   step="0.1"
@@ -409,7 +409,8 @@ export default function Notas() {
                   value={nova_avaliacao.peso}
                   onChange={(e) => setNovaAvaliacao({...nova_avaliacao, peso: e.target.value})}
                 />
-                <small>Trimestre atual: {trimestre_atual}º</small>
+                <br />
+                <small className={styles.trim}>Trimestre atual: {trimestre_atual}º</small>
               </div>
               
               <div className={styles.modalBotoes}>
