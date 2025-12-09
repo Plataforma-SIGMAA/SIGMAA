@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import styles from "./page.materia.module.css";
 import Link from "next/link";
+import { Router } from "next/router";
+import { Toast } from "@/components/Toast/Toast";
 
 export default function DisciplinaPage() {
   const { user, authToken } = useApp();
@@ -39,6 +41,21 @@ export default function DisciplinaPage() {
   useEffect(() => {
     console.log(disciplina);
   }, [disciplina]);
+
+  useEffect(() => {
+    if (!user || user.tipo !== "Estudante") return;
+
+    const temPermissao = user.disciplina_ids?.includes(id);
+
+    if (!temPermissao) {
+      Toast.error("Você não tem permissão para acessar esta disciplina.")
+        .then(() => {
+          Router.push("/home");
+        });
+    }
+  }, [user, id]);
+
+
 
   if (!disciplina)
     return (
@@ -74,10 +91,10 @@ export default function DisciplinaPage() {
                 Swal.fire({
                   title: "Notas",
                   html: `<div style="display: flex; flex-direction: column; align-items: start; text-align: start; gap: 5px;">
-                          <div><b>Avaliacao: </b>${notas[0]?.avaliacao}</div>
-                          <div><b>Peso: </b>${notas[0]?.peso}</div>
-                          <div><b>Nota Obtida: </b>${notas[0]?.nota_obtida}</div>
-                          <div><b>Recuperacao: </b>${notas[0]?.is_recuperacao}</div>
+                          <div><b>Avaliação: </b>${notas[0]?.avaliacao ?? "(Ainda não foi postada, peça ao seu professor)"}</div>
+                          <div><b>Peso: </b>${notas[0]?.peso ?? "(Ainda não foi postado, peça ao seu professor)"}</div>
+                          <div><b>Nota Obtida: </b>${notas[0]?.nota_obtida ?? "(Ainda não foi postada, peça ao seu professor)"}</div>
+                          <div><b>Recuperação: </b>${notas[0]?.is_recuperacao ?? "(Ainda não foi postada, peça ao seu professor)"}</div>
                          </div>`,
                 });
               }}

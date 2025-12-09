@@ -40,6 +40,19 @@ export default function Participantes() {
     console.log(disciplina);
   }, [disciplina]);
 
+  useEffect(() => {
+    if (!user || user.tipo !== "Estudante") return;
+
+    const temPermissao = user.disciplina_ids?.includes(id);
+
+    if (!temPermissao) {
+      Toast.error("Você não tem permissão para acessar esta disciplina.")
+        .then(() => {
+          Router.push("/home");
+        });
+    }
+  }, [user, id]);
+
   if (!disciplina)
     return (
       <>
