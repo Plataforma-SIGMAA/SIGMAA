@@ -46,4 +46,8 @@ class Disciplina extends Model
         return $this->hasMany(DisciplinaEstudante::class);
     }
 
+    public function professor(){
+        return $this->belongsTo(Usuario::class, 'professor_id');
+    }
+
 }

@@ -18,7 +18,7 @@ class CursosController extends Controller
 
         return response()->json($cursos, 200);
     }
-
+ 
     public function store(Request $request)
     {
         $validated = $request->validate([
