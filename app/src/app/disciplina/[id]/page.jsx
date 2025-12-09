@@ -85,22 +85,10 @@ export default function DisciplinaPage() {
               <button className={styles.botaodir}>Participantes</button>
             </Link>
 
-            <button
-              className={styles.botaodir}
-              onClick={() => {
-                Swal.fire({
-                  title: "Notas",
-                  html: `<div style="display: flex; flex-direction: column; align-items: start; text-align: start; gap: 5px;">
-                          <div><b>Avaliação: </b>${notas[0]?.avaliacao ?? "(Ainda não foi postada, peça ao seu professor)"}</div>
-                          <div><b>Peso: </b>${notas[0]?.peso ?? "(Ainda não foi postado, peça ao seu professor)"}</div>
-                          <div><b>Nota Obtida: </b>${notas[0]?.nota_obtida ?? "(Ainda não foi postada, peça ao seu professor)"}</div>
-                          <div><b>Recuperação: </b>${notas[0]?.is_recuperacao ?? "(Ainda não foi postada, peça ao seu professor)"}</div>
-                         </div>`,
-                });
-              }}
-            >
-              Notas
-            </button>
+            <Link href={`/notas?id=${id}`}>
+              <button className={styles.botaodir}>Notas</button>
+            </Link>
+
             <button
               className={styles.botaodir}
               onClick={() => {

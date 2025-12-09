@@ -20,9 +20,9 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
-    'allowed_origins' => ['http://localhost:3000'],
+    'allowed_origins' => ['http://localhost:3000', 'http://localhost:8000'],
 
     'allowed_origins_patterns' => [],
 
