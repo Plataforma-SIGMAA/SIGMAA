@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Link from "next/link";
 import styles from "./participantes.module.css";
+import { Toast } from "@/components/Toast/Toast";
+import { Router } from "next/router";
 
 export default function Participantes() {
   const { user, authToken } = useApp();
