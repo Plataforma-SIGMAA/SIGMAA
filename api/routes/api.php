@@ -5,6 +5,7 @@ use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NotasController;
 use App\Http\Controllers\AvaliacaoController;
 
 Route::middleware('auth:api')->prefix('user')->group(function () {
@@ -21,3 +22,7 @@ Route::prefix('auth')->group(function () {
         Route::get('/disciplina/{disciplinaId}/{userId}', [DisciplinasController::class, 'show']);
     });
 });
+
+Route::get('/notas/{id}', [NotasController::class, 'find']);
+Route::put('/notas/salvar', [NotasController::class, 'update']);
+Route::post('/notas/criar', [NotasController::class, 'store']);

@@ -13,7 +13,7 @@ class Trimestre extends Model
 
     protected $fillable = ['numero', 'disciplina_estudante_id'];
 
-    public function disciplinaAluno():BelongsTo{
+    public function disciplinaEstudante():BelongsTo{
         return $this->belongsTo(DisciplinaEstudante::class, 'disciplina_estudante_id');
     }
 
