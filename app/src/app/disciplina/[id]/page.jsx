@@ -127,6 +127,9 @@ export default function DisciplinaPage() {
 
           <div className={styles.blocofreq}>
             <h2 className={styles.freq}>Avaliações</h2>
+            <button  className={styles.botaodir} onClick={() => { 
+                  window.location.href = `/avaliacoes?id=${id}`;
+            }}>Ver Avaliações</button>
           </div>
           <div className={styles.avaliacoescontainer}>
             <table className={styles.avaliacoes}>

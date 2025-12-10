@@ -16,7 +16,7 @@ export default function Avaliacoes() {
     desc: "",
     data: "",
     horario: "",
-    disciplina_id: 7,
+    disciplina_id: id,
   });
   const [editId, setEditId] = useState(null);
 
@@ -67,7 +67,7 @@ export default function Avaliacoes() {
       setAvaliacoes(data);
 
       setModalOpen(false);
-      setForm({ desc: "", data: "", horario: "", disciplina_id: 7 });
+      setForm({ desc: "", data: "", horario: "", disciplina_id: id });
       setEditId(null);
 
     } catch (error) {
