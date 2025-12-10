@@ -19,10 +19,6 @@ class Disciplina extends Model
         return $this->belongsTo(Curso::class);
     }
 
-    public function professor():HasOne{
-        return $this->hasOne(User::class, 'professor_id');
-    }
-
     public function plano_ensino():HasOne{
         return $this->hasOne(Plano_Ensino::class);
     }
@@ -45,6 +41,10 @@ class Disciplina extends Model
 
     public function disciplinasEstudantes():HasMany{
         return $this->hasMany(DisciplinaEstudante::class);
+    }
+
+    public function professor(){
+        return $this->belongsTo(Usuario::class, 'professor_id');
     }
 
 }

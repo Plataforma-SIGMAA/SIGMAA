@@ -32,7 +32,7 @@ class TopicosController extends Controller
         }
 
     
-        return response()->json(['message' => 'Topico criado com sucesso!'])
+        return response()->json(['message' => 'Topico criado com sucesso!']);
     }
 
     public function show(string $id)

@@ -1,0 +1,166 @@
+.avaliacoes-page{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.avaliacao-main{
+  margin-top: 4rem;
+  padding: 3rem 6rem;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.btn-add {
+  box-sizing: border-box;
+  background: #005a9e;
+  color: white;
+  padding: 10px 16px;
+  border: 3px solid #005a9e;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-bottom: 3rem;
+  align-self: center;
+  font-size: 1.3rem;
+}
+.btn-add:hover {
+  transition: background 0.3s;
+  background-color: #04a34f;
+  border: 3px solid #037b3b;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.avaliacao-card {
+  background: white;
+  border: 3px solid #d0d0d0;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.avaliacao-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.avaliacao-card h2 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  color: black;
+}
+
+.avaliacao-card p {
+  margin: 4px 0;
+  color: #444;
+}
+
+.card-actions {
+  width: 10rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn-delete {
+  background: #d9534f;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  max-height: fit-content;
+}
+.btn-delete:hover{
+  background: #b22823;
+  transition: background 0.3s;
+}
+
+.btn-edit:hover{
+  background: #03519f;
+  transition: background 0.3s;
+}
+
+.btn-edit {
+  background: #0275d8;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  max-height: fit-content;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.modal-box h2 {
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.modal-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-box input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.modal-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-cancel {
+  background: #777;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-save {
+  background: #04a34f;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

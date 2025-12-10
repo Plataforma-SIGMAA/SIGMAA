@@ -22,11 +22,13 @@ class Usuario extends Authenticatable implements JWTSubject
     protected $fillable = [
         'nome',
         'matricula',
-        'email',
+        'tipo',
         'cpf',
         'rg',
         'telefone',
+        'email',
         'data_nasc',
+        'foto',
         'pai',
         'mae',
         'sexo',
@@ -39,7 +41,6 @@ class Usuario extends Authenticatable implements JWTSubject
         'bairro',
         'rua',
         'numero_casa',
-        'tipo',
         'curso_id,'
     ];
 
@@ -80,6 +81,11 @@ class Usuario extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(DisciplinaEstudante::class);
     }
+
+    public function disciplinas()
+        {
+            return $this->hasMany(Disciplina::class, 'professor_id');
+        }
 
     public function getJWTIdentifier()
     {

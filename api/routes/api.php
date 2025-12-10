@@ -1,9 +1,16 @@
 <?php
 
+use App\Http\Controllers\DisciplinasController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NotasController;
+use App\Http\Controllers\AvaliacaoController;
+
+Route::middleware('auth:api')->prefix('user')->group(function () {
+    Route::put('/{id}', [UsuariosController::class, 'update']);
+});
 
 Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
@@ -12,6 +19,7 @@ Route::prefix('auth')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/refresh', [AuthController::class, 'refresh']);
         Route::post('/profile', [AuthController::class, 'profile']);
+        Route::get('/disciplina/{disciplinaId}/{userId}', [DisciplinasController::class, 'show']);
     });
 });
 

@@ -1,27 +1,29 @@
-.html, .body {
+.html,
+.body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; 
-  overflow-y: hidden; 
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .corpo {
-  min-height: calc(100vh - 120px);
+  margin-top: 50px;
+  min-height: 100vh;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: flex-start;
   background-color: rgb(237, 237, 237);
-  padding: 80px 0 60px 0; 
+  padding: 80px 0 60px 0;
   box-sizing: border-box;
-  gap: 170px; 
+  gap: 170px;
   overflow: hidden;
 }
 .main {
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 1400px; 
+  max-width: 1400px;
   margin: 0 auto;
   height: calc(100vh - 120px);
   overflow: hidden;
@@ -29,7 +31,7 @@
 
 .menu {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   padding: 0 40px;
   height: 70px;
@@ -39,10 +41,10 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .titlemateria {
-    color: black;
+  color: black;
 }
 .menu ul {
   display: flex;
@@ -62,23 +64,18 @@
 }
 
 .menu ul li .material-symbols-outlined {
-    cursor: pointer;
-    padding: 4px;
+  cursor: pointer;
+  padding: 4px;
 }
 
-
 .icon {
-    font-size: 36px !important; 
-    cursor: pointer;
-    padding: 4px;
-}   
+  font-size: 36px !important;
+  cursor: pointer;
+  padding: 4px;
+}
 
 .menu-barra {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 40
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 40;
 }
 
 .perfil {
@@ -91,22 +88,14 @@
   font-weight: 500;
 }
 
-
 .abaixar {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 20;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
 }
-
-
 
 /* conteúdo da esquerda */
 .conteudoesq {
-  width: 420px; 
+  width: 420px;
 }
-
 
 .diretorios {
   background-color: rgb(255, 255, 255);
@@ -115,7 +104,7 @@
   gap: 4px;
   padding: 5px;
   margin-top: 16px;
-  width: fit-content; 
+  width: fit-content;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 2px solid rgb(166, 166, 166);
@@ -124,29 +113,28 @@
 .botaodir {
   position: relative;
   background-color: rgb(255, 255, 255);
-  border: 2px solid #000; 
+  border: 2px solid #000;
   border-radius: 6px;
-  --stripe-width: 60px; 
+  --stripe-width: 60px;
   padding: 12px 16px 12px calc(var(--stripe-width) + 12px);
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.15s ease, background-color 0.15s ease;
-  width: auto; 
-  min-width: 400px; 
+  width: auto;
+  min-width: 400px;
   height: 100%;
   min-height: 60px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   text-align: left;
   overflow: hidden;
-  color : black; 
+  color: black;
 }
-
 
 .botaodir::before {
   content: "";
   position: absolute;
-  left: 1px; 
+  left: 1px;
   top: 1px;
   bottom: 1px;
   width: var(--stripe-width);
@@ -189,7 +177,6 @@
   border: 1px solid rgb(166, 166, 166);
 }
 
-
 .caixafreq::before {
   content: "";
   position: absolute;
@@ -200,7 +187,6 @@
   background: rgb(40, 167, 69);
   z-index: 0;
 }
-
 
 .caixafreq::after {
   content: "";
@@ -226,53 +212,46 @@
   font-weight: bold;
   position: relative;
   z-index: 1;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-
 
 .conta {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 20
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
 }
 
-.conta{
-    font-size: 36px !important;
+.conta {
+  font-size: 36px !important;
 }
-
 
 /* avaliações */
 .avaliacoescontainer {
-  max-height: 250px;    
-  overflow-y: auto;      
+  max-height: 250px;
+  overflow-y: auto;
   border-radius: 8px;
   border: 2px solid #a6a6a6;
   background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 412px;            
-  scrollbar-width: thin;    
+  width: 412px;
+  scrollbar-width: thin;
   scrollbar-color: #aaa #f1f1f1;
 }
 
-
 .avaliacoescontainer::-webkit-scrollbar {
-  width: 8px;           
+  width: 8px;
 }
 
 .avaliacoescontainer::-webkit-scrollbar-track {
-  background: #f1f1f1;      
+  background: #f1f1f1;
   border-radius: 8px;
 }
 
 .avaliacoescontainer::-webkit-scrollbar-thumb {
-  background-color: #aaa; 
+  background-color: #aaa;
   border-radius: 8px;
 }
 
 .avaliacoescontainer::-webkit-scrollbar-thumb:hover {
-  background-color: #777;  
+  background-color: #777;
 }
 
 /* tabela em si */
@@ -288,43 +267,38 @@
   text-align: left;
 }
 
-
 .avaliacoes thead {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
 }
 
 .avaliacoes th {
-    text-align: left;
-    padding: 16px;
-    font-weight: 600;
-    color: black;
-    border-bottom: 1px solid #dee2e6;
+  text-align: left;
+  padding: 16px;
+  font-weight: 600;
+  color: black;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .avaliacoes td {
-    padding: 16px;
-    color: black;
-    border-bottom: 1px solid #dee2e6;
-    cursor: pointer;
+  padding: 16px;
+  color: black;
+  border-bottom: 1px solid #dee2e6;
+  cursor: pointer;
 }
 
 .avaliacoes tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .avaliacoes tbody tr:hover {
-    background-color: #f8f9fa;
-
+  background-color: #f8f9fa;
 }
-
 
 /*centralizar os dois blocos*/
-.conteudoesq, .conteudodir {
+.conteudoesq,
+.conteudodir {
   flex: none;
 }
-
-
-
 
 /* conteúdos da direita */
 .conteudodir {
@@ -333,10 +307,10 @@
 }
 
 .titulocont {
-    color: black;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .listacont {
@@ -347,26 +321,26 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-right: 0;
   width: 700px;
-  max-height: 670px;  
+  max-height: 670px;
   overflow-y: auto;
 }
 
 .listacont::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 .listacont::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
+  background: #f1f1f1;
+  border-radius: 4px;
 }
 
 .listacont::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
+  background: #888;
+  border-radius: 4px;
 }
 
 .listacont::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 .aula,
@@ -378,22 +352,20 @@
   margin-bottom: 30px;
   color: black;
   display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .feriado {
   border: 2px solid red;
 }
 
-
 .aula strong,
 .feriado strong {
   color: black;
   font-size: 25px;
-  margin-bottom: 6px; 
+  margin-bottom: 6px;
 }
-
 
 .aula p,
 .feriado p {
@@ -401,9 +373,8 @@
   font-weight: bold;
   margin: 0;
   font-size: 14px;
-  align-self: flex-end; 
+  align-self: flex-end;
 }
-
 
 .rodape {
   position: fixed;
@@ -422,8 +393,6 @@
   z-index: 1000;
 }
 
-
-
 .rodape::before,
 .rodape::after {
   content: none !important;
@@ -432,6 +401,7 @@
   box-shadow: none !important;
 }
 
-.main, .corpo {
-  padding-bottom: 80px; 
+.main,
+.corpo {
+  padding-bottom: 80px;
 }
